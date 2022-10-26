@@ -6,6 +6,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { colors } from '../styles/colors';
 import { fonts } from '../styles/fonts';
 
+import Nav from './nav';
+
 const GlobalStyle = createGlobalStyle`
   html {
     margin: 0;
@@ -71,16 +73,32 @@ const GlobalStyle = createGlobalStyle`
 
 const GlobalWrapper = styled.div`
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5em 1fr;
+  grid-template-areas: "nav" "page" "footer";
+`;
+
+const ScrollWrapper = styled.div`
+  grid-area: nav / nav / app / app;
+  display: grid;
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  background-color: ${colors.greys.one};
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 function Layout ({ children }) {
   return (
     <GlobalWrapper>
       <GlobalStyle />
-      <header>
-        <h1 style={{ margin: 0 }}>header</h1>
-      </header>
-      {children}
+      <Nav />
+      <ScrollWrapper>
+        {children}
+      </ScrollWrapper>
       <h1>footer</h1>
     </GlobalWrapper>
   );

@@ -9,21 +9,23 @@ import { JumboLarge, NavLink } from './text';
 
 const Wrapper = styled.div`
   display: grid;
-  row-gap: 6rem;
-  padding: 10rem;
+  row-gap: 2rem;
+  margin: 10em 0 0 0;
+  padding: 10em;
   grid-template-areas: "cta" "nav";
+  grid-template-rows: 20em auto;
 `;
 
 const CTAWrapper = styled.div`
   grid-area: cta;
 `;
 
-const NavWrapper = styled.div`
+const NavWrapper = styled.nav`
   grid-area: nav;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
-  row-gap: 1rem;
+  grid-template-columns: max-content;
+  grid-template-rows: repeat(4, 2rem);
+  row-gap: 2rem;
   margin: 0 0 0 18.3em;
 `;
 
