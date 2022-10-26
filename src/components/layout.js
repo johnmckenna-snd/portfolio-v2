@@ -1,12 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+
 import styled, { createGlobalStyle } from 'styled-components';
 
 import { colors } from '../styles/colors';
 import { fonts } from '../styles/fonts';
-
-import Layout from '../components/layout';
-import Hero from '../components/hero';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -75,13 +73,17 @@ const GlobalWrapper = styled.div`
   height: 100vh;
 `;
 
-export default function Home () {
+function Layout ({ children }) {
   return (
     <GlobalWrapper>
       <GlobalStyle />
-      <Layout>
-        <Hero />
-      </Layout>
+      <header>
+        <h1 style={{ margin: 0 }}>header</h1>
+      </header>
+      {children}
+      <h1>footer</h1>
     </GlobalWrapper>
   );
 }
+
+export default Layout;
