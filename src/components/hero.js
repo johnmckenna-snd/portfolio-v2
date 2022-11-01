@@ -10,10 +10,10 @@ import { JumboLarge, NavLink } from './text';
 const Wrapper = styled.div`
   display: grid;
   row-gap: 2rem;
-  margin: 10em 0 0 0;
-  padding: 10em;
+  margin: 18rem 0 0 0;
   grid-template-areas: "cta" "nav";
-  grid-template-rows: 20em auto;
+  grid-template-rows: 20rem auto;
+  justify-items: center;
 `;
 
 const CTAWrapper = styled.div`
@@ -26,7 +26,7 @@ const NavWrapper = styled.nav`
   grid-template-columns: max-content;
   grid-template-rows: repeat(4, 2rem);
   row-gap: 2rem;
-  margin: 0 0 0 18.3em;
+  margin: 0 42rem 0 0;
 `;
 
 function Hero () {
@@ -34,26 +34,27 @@ function Hero () {
     <Wrapper>
       <CTAWrapper>
         <JumboLarge
-          margin="0 0 0 18rem"
+          margin="0 0 0 11.4rem"
         >
           Hello
           <span style={{ color: colors.colors.orange }}>,</span>
           {' '}
           I'm John
+          <span style={{ color: colors.colors.orange, margin: '0 0 0 .1rem' }}>:</span>
         </JumboLarge>
         <JumboLarge margin="-2rem 0 0 0">
-          Developer
-          {' '}
-          <span style={{ color: colors.colors.purple }}>and</span>
-          {' '}
           Designer
+          {' '}
+          <span style={{ color: colors.colors.purple, margin: '0 0 0 .4rem' }}>&</span>
+          {' '}
+          <span style={{ margin: '0 0 0 1.1rem' }}>Developer</span>
         </JumboLarge>
       </CTAWrapper>
       <NavWrapper>
-        <NavLink href="/work">Work</NavLink>
-        <NavLink>Blog</NavLink>
-        <NavLink href="/about">About</NavLink>
-        <NavLink>Contact</NavLink>
+        <NavLink to="/work">Work</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </NavWrapper>
     </Wrapper>
   );

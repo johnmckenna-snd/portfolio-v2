@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${fonts.regular.fontFamily};
     font-weight: ${fonts.regular.regular.weight};
     font-style: ${fonts.regular.regular.style};
+    background: ${colors.greys.one};
   }
   body {
     margin: 0;
