@@ -8,9 +8,20 @@ module.exports = {
   /* Your site config here */
   plugins: [
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-transformer-remark',
-      options: { plugins: ['gatsby-remark-component'] },
+      options: {
+        plugins: [
+          'gatsby-remark-component',
+          {
+            resolve: `gatsby-remark-images`,
+            options: { maxWidth: 800 },
+          },
+        ],
+      },
     },
     {
       resolve: `gatsby-omni-font-loader`,
@@ -30,6 +41,17 @@ module.exports = {
         name: `markdown-pages`,
         path: `${__dirname}/src/markdown-pages`,
       },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: { rule: { include: /svg\/.*\.svg/ } },
     },
   ],
 };

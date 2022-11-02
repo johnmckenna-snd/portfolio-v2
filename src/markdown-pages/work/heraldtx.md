@@ -1,9 +1,12 @@
 ---
-slug: "/work/champion-data-systems"
-date: "2022-10-31"
-title: "Champion Data Systems"
-subtitle: "Application Developer & Contractor"
+slug: "/work/herald-therapeutics-inc"
+date: "2022-10-30"
+title: "Herald Therapeutics"
+subtitle: "Web Development, Design, Branding"
+tags: ["work"]
 ---
+
+![sndwrks logo](../../images/sndwrks_logo_blacktext.png)
 
 # Big Yeet
 

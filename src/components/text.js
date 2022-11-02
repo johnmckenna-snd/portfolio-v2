@@ -84,6 +84,7 @@ export const Heading1Small = styled.h1`
   justify-self: ${justifySelf};
   align-self: ${alignSelf};
   line-height: ${lineHeight};
+  text-shadow: 0 4px 0 ${colors.colors.green};
   ${mediaQuery}
 `;
 
@@ -133,7 +134,7 @@ export const Paragraph = styled.p`
   font-weight: ${fonts.regular.regular.weight};
   font-style: ${fonts.regular.regular.style};
   font-size: 1rem;
-  color: ${colorLighter};
+  color: ${color};
   margin: ${margin};
   padding: ${padding};
   justify-self: ${justifySelf};
@@ -200,4 +201,31 @@ export const BlogLink = styled.a`
   line-height: ${lineHeight};
   transform: ${transform};
   ${mediaQuery}
+
+  &:hover {
+    color: ${colors.colors.purple};
+  }
+`;
+
+export const LabelLink = styled.a`
+  grid-area: ${gridArea};
+  border-top: ${borderTop};
+  border-bottom: ${borderBottom};
+  font-family: ${fonts.mono.fontFamily};
+  font-weight: ${fonts.mono.light.weight};
+  font-style: ${fonts.mono.light.style};
+  font-size: 1rem;
+  color: ${colorLighter};
+  margin: ${margin};
+  padding: ${padding};
+  justify-self: ${justifySelf};
+  align-self: ${alignSelf};
+  line-height: ${lineHeight};
+  transform: ${transform};
+  text-decoration: none;
+  ${mediaQuery}
+
+  &:hover {
+    color: ${colors.colors.orange};
+  }
 `;

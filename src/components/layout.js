@@ -7,6 +7,7 @@ import { colors } from '../styles/colors';
 import { fonts } from '../styles/fonts';
 
 import Nav from './nav';
+import Footer from './footer';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -76,7 +77,7 @@ const GlobalWrapper = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 5em 1fr;
+  grid-template-rows: 5em 1fr 3em;
   grid-template-areas: "nav" "page" "footer";
 `;
 
@@ -100,7 +101,7 @@ function Layout ({ children }) {
       <ScrollWrapper>
         {children}
       </ScrollWrapper>
-      <h1>footer</h1>
+      <Footer />
     </GlobalWrapper>
   );
 }

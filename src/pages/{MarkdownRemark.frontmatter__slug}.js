@@ -2,10 +2,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import rehypeReact from 'rehype-react';
+import RehypeReact from 'rehype-react';
 
 import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink } from '../components/text';
 import Layout from '../components/layout';
+import { colors } from '../styles/colors';
 
 const ModifiedHeading2 = styled(Heading2)`
   margin: 4rem 0 4rem 0;
@@ -22,8 +23,7 @@ const ModifiedParagraph = styled(Paragraph)`
 const ModifiedBlogLink = styled(BlogLink)`
 `;
 
-// eslint-disable-next-line new-cap
-const renderAst = new rehypeReact({
+const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
     h1: ModifiedHeading2,
@@ -62,7 +62,7 @@ function Template ({ data }) {
       <Wrapper>
         <ContentWrapper>
           <Heading1Large gridArea="heading">{frontmatter.title}</Heading1Large>
-          <Label gridArea="subtitle">{frontmatter.subtitle}</Label>
+          <Label color={colors.colors.purple} gridArea="subtitle">{frontmatter.subtitle}</Label>
           <MarkdownWrapper>{renderAst(htmlAst)}</MarkdownWrapper>
         </ContentWrapper>
       </Wrapper>

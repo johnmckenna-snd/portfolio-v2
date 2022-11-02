@@ -42,7 +42,7 @@ const NavWrapper = styled.nav`
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min-content;
-  grid-column-gap: 1rem;
+  grid-column-gap: 2rem;
   margin: 0 2rem 0 0;
 `;
 
@@ -64,7 +64,7 @@ function Nav () {
       <NavLeft>
         <LineWrapper>
           <svg viewBox="0 0 20 100" height="400px" width="80px" xmlns="http://www.w3.org/2000/svg">
-            <line x1="2" y1="7" x2="2" y2="100" stroke={colors.colors.orange} strokeWidth=".25px" />
+            <line x1="2" y1="7" x2="2" y2="100" stroke={colors.colors.orange} strokeWidth=".25" />
           </svg>
           <SideWaysTextWrapper>
             <Label>ooo trendy sideways letters</Label>
