@@ -1,8 +1,10 @@
 ---
-slug: "/work/herald-therapeutics-inc"
+slug: "/blog/make-a-custom-hook-to-fetch-and-cache-results"
 date: "2022-10-30"
-title: "Herald Therapeutics"
-subtitle: "Web Development, Design, Branding"
+title: "Make a Custom Hook to Fetch and Cache Results"
+subtitle: "Use Axios and React to make data retrieval easy and efficient"
+tags: ["work"]
+featuredImage: "../../images/react-logo.png"
 ---
 
 ![sndwrks logo](../../images/sndwrks_logo_blacktext.png)

@@ -22,17 +22,33 @@ const ListWrapper = styled.section`
   max-width: 800px;
 `;
 
-function WorkList ({ data: { allMarkdownRemark: { edges } } }) {
+function BlogList ({ data: { allMarkdownRemark: { edges } } }) {
   return (
     <Layout>
       <Wrapper>
         <ListWrapper>
-          {edges.map(({ node: { id, frontmatter: { slug, title, subtitle } } }) => (
+          {edges.map(({
+            node: {
+              id,
+              frontmatter: {
+                slug,
+                title,
+                subtitle,
+                tags,
+                featuredImage,
+                date,
+              },
+            },
+          }) => (
             <PostLink
               key={id}
               title={title}
               subtitle={subtitle}
               slug={slug}
+              makeSmall
+              tags={tags}
+              featuredImage={featuredImage}
+              date={date}
             />
           ))}
         </ListWrapper>
@@ -41,7 +57,7 @@ function WorkList ({ data: { allMarkdownRemark: { edges } } }) {
   );
 }
 
-export default WorkList;
+export default BlogList;
 
 export const pageQuery = graphql`
   query {
@@ -51,7 +67,7 @@ export const pageQuery = graphql`
         },
         filter: {
           fileAbsolutePath: {
-            regex: "/(work)/"
+            regex: "/(blog)/"
           }
         }
       ) {
@@ -67,6 +83,15 @@ export const pageQuery = graphql`
             slug
             title
             subtitle
+            tags
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 400
+                  placeholder: BLURRED
+                )
+              }
+            }
           }
         }
       }

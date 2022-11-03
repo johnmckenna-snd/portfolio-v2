@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { colors } from '../styles/colors';
 
-import { JumboLarge, NavLink } from './text';
+import { JumboLarge, NavLinkBig } from './text';
 
 const Wrapper = styled.div`
   display: grid;
@@ -51,10 +51,10 @@ function Hero () {
         </JumboLarge>
       </CTAWrapper>
       <NavWrapper>
-        <NavLink to="/work">Work</NavLink>
-        <NavLink to="/blog">Blog</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLinkBig to="/work">Work</NavLinkBig>
+        <NavLinkBig to="/blog">Blog</NavLinkBig>
+        <NavLinkBig to="/about">About</NavLinkBig>
+        <NavLinkBig to="/contact">Contact</NavLinkBig>
       </NavWrapper>
     </Wrapper>
   );

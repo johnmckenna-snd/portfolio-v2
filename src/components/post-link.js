@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { colors } from '../styles/colors';
 
@@ -11,8 +12,8 @@ import Arrow from '../svg/PostLinkArrow.svg';
 
 const Wrapper = styled(Link)`
   display: grid;
-  grid-template-areas: "title" "subtitle" "button";
-  grid-template-rows: 6rem 1rem 3.5rem;
+  grid-template-areas: "image" "title" "subtitle" "button";
+  grid-template-rows: auto auto 1rem 3.5rem;
   grid-row-gap: 1rem;
   text-decoration: none;
 `;
@@ -27,7 +28,7 @@ const ArrowWrapper = styled.div`
 
 `;
 
-function PostLink ({ title, subtitle, slug, makeSmall }) {
+function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -36,10 +37,18 @@ function PostLink ({ title, subtitle, slug, makeSmall }) {
       onMouseLeave={() => setIsHovered(false)}
       to={slug}
     >
+      {featuredImage && (
+        <GatsbyImage
+          style={{ width: '400px' }}
+          image={featuredImage.childImageSharp.gatsbyImageData}
+          alt={title}
+        />
+      )}
       {makeSmall
-        ? <Heading1Small>{title}</Heading1Small>
+        ? <Heading1Small lineHeight={1.5}>{title}</Heading1Small>
         : <Heading1Large>{title}</Heading1Large>}
-      <Label>
+      <Label color={colors.colors.purple}>
+        {date && `${date} - `}
         {subtitle}
       </Label>
       <ArrowWrapper to={slug} isHovered={isHovered}>

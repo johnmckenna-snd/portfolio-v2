@@ -1,8 +1,10 @@
 ---
-slug: "/work/herald-therapeutics-inc"
-date: "2022-10-30"
-title: "Herald Therapeutics"
-subtitle: "Web Development, Design, Branding"
+slug: "/blog/serve-a-react-app-from-s3"
+date: "2022-11-02"
+title: "Serve a React App from S3"
+subtitle: "Includes Cloudfront CDN and Github Action CI/CD"
+tags: ["react", "cloudfront", "aws", "github actions", "ci/cd"]
+featuredImage: "../../images/react-logo.png"
 ---
 
 ![sndwrks logo](../../images/sndwrks_logo_blacktext.png)

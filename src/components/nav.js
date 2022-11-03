@@ -29,8 +29,10 @@ const LineWrapper = styled.div`
 `;
 
 const SideWaysTextWrapper = styled.div`
-  transform: translate(-153px, 100px) rotate(270deg);
-  width: 20rem;
+  transform: translate(-193px, 210px) rotate(270deg);
+  width: 25rem;
+  justify-items: end;
+  text-align: end;
 `;
 
 const NavRight = styled.div`
@@ -46,8 +48,22 @@ const NavWrapper = styled.nav`
   margin: 0 2rem 0 0;
 `;
 
+const easterEggOptions = [
+  'ooo trendy sideways letters',
+  'oh ho! you found the easter egg',
+  'yes, good keep clicking...',
+  'is this this end?',
+  'i guess not. i\'ll just click once more.',
+];
+
 function Nav () {
   const [showNav, setShowNav] = useState(false);
+  const [easterEggIndex, setEasterEggIndex] = useState(0);
+
+  function handleClick () {
+    const newIndex = (easterEggIndex + 1) % easterEggOptions.length;
+    setEasterEggIndex(newIndex);
+  }
 
   useEffect(() => {
     if (window !== undefined) {
@@ -67,7 +83,7 @@ function Nav () {
             <line x1="2" y1="7" x2="2" y2="100" stroke={colors.colors.orange} strokeWidth=".25" />
           </svg>
           <SideWaysTextWrapper>
-            <Label>ooo trendy sideways letters</Label>
+            <Label onClick={handleClick} style={{ cursor: 'help' }}>{easterEggOptions[easterEggIndex]}</Label>
           </SideWaysTextWrapper>
         </LineWrapper>
         <NavLink margin="0 0 0 0" height="3em" to="/">John McKenna</NavLink>

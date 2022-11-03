@@ -169,6 +169,29 @@ export const NavLink = styled(Link)`
   font-family: ${fonts.mono.fontFamily};
   font-weight: ${fonts.mono.bold.weight};
   font-style: ${fonts.mono.bold.style};
+  font-size: 2.2rem;
+  color: ${colorLighter};
+  margin: ${margin};
+  padding: ${padding};
+  justify-self: ${justifySelf};
+  align-self: ${alignSelf};
+  line-height: ${lineHeight};
+  text-decoration: none;
+  height: ${height};
+  ${mediaQuery}
+
+  &:hover {
+    color: ${colors.colors.orange};
+  }
+`;
+
+export const NavLinkBig = styled(Link)`
+  grid-area: ${gridArea};
+  border-top: ${borderTop};
+  border-bottom: ${borderBottom};
+  font-family: ${fonts.mono.fontFamily};
+  font-weight: ${fonts.mono.bold.weight};
+  font-style: ${fonts.mono.bold.style};
   font-size: 2.5rem;
   color: ${colorLighter};
   margin: ${margin};

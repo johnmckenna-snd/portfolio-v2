@@ -11,6 +11,7 @@ const Wrapper = styled.footer`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: end;
+  z-index: 1000;
 `;
 
 const LinkWrapper = styled.div`
@@ -45,12 +46,13 @@ function Footer () {
         {footerLinks.map(({ text, link }, i) => (
           <>
             <LabelLink
+              key={link}
               href={link}
               margin="0 0 0 0"
             >
               {text}
             </LabelLink>
-            {i < footerLinks.length - 1 && <Label margin="0 0 0 0">-</Label>}
+            {i < footerLinks.length - 1 && <Label key={text} margin="0 0 0 0">-</Label>}
           </>
         ))}
         <svg

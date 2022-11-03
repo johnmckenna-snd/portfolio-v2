@@ -9,11 +9,11 @@ import Layout from '../components/layout';
 import { colors } from '../styles/colors';
 
 const ModifiedHeading2 = styled(Heading2)`
-  margin: 4rem 0 4rem 0;
+  margin: 4rem 0 2rem 0;
 `;
 
 const ModifiedHeading3 = styled(Heading3)`
-  margin: 2rem 0 2rem 0;
+  margin: 3rem 0 2rem 0;
 `;
 
 const ModifiedParagraph = styled(Paragraph)`
@@ -43,14 +43,28 @@ const ContentWrapper = styled.section`
   grid-area: content;
   display: grid;
   grid-template-areas: "heading" "subtitle" "content";
-  grid-template-rows: 10rem 6rem auto;
+  grid-template-rows: auto 6rem auto;
   margin: 10rem 0 0 0;
+  max-width: 800px;
 `;
 
 const MarkdownWrapper = styled.div`
   grid-area: content;
-  margin: 0 0 40rem 0;
+  margin: 0 0 40vh 0;
   max-width: 65ch;
+
+  ul {
+    list-style: none;
+  }
+
+  li::before {
+    content: "~ ";
+    color: ${colors.colors.orange};
+  }
+
+  li {
+    margin: 1rem 0 0 0;
+  }
 `;
 
 function Template ({ data }) {
@@ -61,7 +75,7 @@ function Template ({ data }) {
     <Layout>
       <Wrapper>
         <ContentWrapper>
-          <Heading1Large gridArea="heading">{frontmatter.title}</Heading1Large>
+          <Heading1Large gridArea="heading" lineHeight={1.5}>{frontmatter.title}</Heading1Large>
           <Label color={colors.colors.purple} gridArea="subtitle">{frontmatter.subtitle}</Label>
           <MarkdownWrapper>{renderAst(htmlAst)}</MarkdownWrapper>
         </ContentWrapper>
@@ -81,6 +95,15 @@ export const pageQuery = graphql`
         slug
         title
         subtitle
+        tags
+        featuredImage {
+          childImageSharp {
+            gatsbyImageData(
+              width: 800
+              placeholder: BLURRED
+            )
+          }
+        }
       }
     }
   }`;
