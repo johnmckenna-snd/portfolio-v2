@@ -1,7 +1,7 @@
 ---
 slug: "/blog/make-a-custom-hook-to-fetch-and-cache-results"
 date: "2022-10-30"
-title: "Make a Custom Hook to Fetch and Cache Results"
+title: "A Grid Bot via Gemini API"
 subtitle: "Use Axios and React to make data retrieval easy and efficient"
 tags: ["work"]
 featuredImage: "../../images/react-logo.png"

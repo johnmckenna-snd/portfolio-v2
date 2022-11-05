@@ -12,6 +12,8 @@ const Wrapper = styled.footer`
   grid-template-columns: 1fr;
   justify-items: end;
   z-index: 1000;
+  background: ${colors.greys.one};
+  border-top: 1px ${colors.greys.three} solid;
 `;
 
 const LinkWrapper = styled.div`

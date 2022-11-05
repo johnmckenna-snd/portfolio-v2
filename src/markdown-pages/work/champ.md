@@ -17,8 +17,9 @@ I started off at Champion Data Systems (Champ) as a contractor before they event
 - UI/UX Design
 - Marketing Materials Creation
 - Developed Green Initiative
+- OAuth2
 
-## Development
+# Development
 
 When I started working for Champ, they were running a monolithic stack based on metal servers. My boss tasked us with developing the second generation of the platform utilizing microservices and deployed in the cloud.
 
@@ -29,3 +30,7 @@ We started from the ground up and completely rebuilt the platform. My boss and I
 Champ has an agenda management app that runs on the old PHP stack, but it lacks modern responsiveness, features, and development flexibility. The goal was to build a new application from the ground up.
 
 I was involved in the customer interviews, planning, and ui design.
+
+## Graphics
+
+Champ had a lot of requests from customers for a simple digital signage solution in addition to their video packages. Utilizing socket.io, I built a solution for realtime control of a Raspberry Pi in kiosk mode.

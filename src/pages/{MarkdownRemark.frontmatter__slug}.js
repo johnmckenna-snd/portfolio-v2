@@ -42,16 +42,29 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.section`
   grid-area: content;
   display: grid;
-  grid-template-areas: "heading" "subtitle" "content";
-  grid-template-rows: auto 6rem auto;
+  grid-template-areas: "heading" "content";
+  grid-template-rows: auto auto;
   margin: 10rem 0 0 0;
   max-width: 800px;
 `;
 
+const HeadingWrapper = styled.div`
+  grid-area: heading;
+  grid-template-areas: "heading-text" "subtitle";
+  grid-template-rows: auto 1rem;
+  margin: 0 0 4rem 0;
+  box-shadow: 4px 4px 0 ${colors.colors.green};
+  border: .1rem solid ${colors.greys.seven};
+  padding: 0 2rem 2rem 2rem;
+`;
+
 const MarkdownWrapper = styled.div`
   grid-area: content;
-  margin: 0 0 40vh 0;
+  margin: 0 0 40vh 2rem;
   max-width: 65ch;
+  box-shadow: 4px 4px 0 ${colors.colors.green};
+  border: .1rem solid ${colors.greys.seven};
+  padding: 0 2rem 2rem 2rem;
 
   ul {
     list-style: none;
@@ -75,8 +88,10 @@ function Template ({ data }) {
     <Layout>
       <Wrapper>
         <ContentWrapper>
-          <Heading1Large gridArea="heading" lineHeight={1.5}>{frontmatter.title}</Heading1Large>
-          <Label color={colors.colors.purple} gridArea="subtitle">{frontmatter.subtitle}</Label>
+          <HeadingWrapper>
+            <Heading1Large gridArea="heading-text" lineHeight={1}>{frontmatter.title}</Heading1Large>
+            <Label color={colors.colors.purple} gridArea="subtitle" margin="2rem 0 0 0">{frontmatter.subtitle}</Label>
+          </HeadingWrapper>
           <MarkdownWrapper>{renderAst(htmlAst)}</MarkdownWrapper>
         </ContentWrapper>
       </Wrapper>

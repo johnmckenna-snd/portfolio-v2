@@ -34,7 +34,7 @@ const FormLabel = styled.label`
   font-weight: ${fonts.mono.light.weight};
   font-style: ${fonts.mono.light.style};
   font-size: 1rem;
-  color: ${colors.greys.six};
+  color: ${colors.greys.seven};
   margin: ${margin};
   padding: ${padding};
   justify-self: ${justifySelf};
@@ -49,7 +49,7 @@ const Input = styled.input`
   border: .1rem solid ${colors.greys.seven};
   background-color: ${colors.greys.one};
   padding: .2em 1em .2em 1em;
-  color: ${colors.greys.five};
+  color: ${colors.greys.seven};
   font-size: 1.6rem;
   font-weight: ${fonts.mono.light.weight};
   font-family: ${fonts.mono.fontFamily};
@@ -66,7 +66,7 @@ const Input = styled.input`
   }
 
   &::placeholder {
-    color: ${colors.greys.five};
+    color: ${colors.greys.six};
   }
 `;
 
@@ -75,7 +75,7 @@ const TextArea = styled.textarea`
   border: .1rem solid ${colors.greys.seven};
   background-color: ${colors.greys.one};
   padding: .2em 1em .2em 1em;
-  color: ${colors.greys.five};
+  color: ${colors.greys.seven};
   font-size: 1.6em;
   font-weight: ${fonts.mono.light.weight};
   font-family: ${fonts.mono.fontFamily};

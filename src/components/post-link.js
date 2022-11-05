@@ -13,14 +13,28 @@ import Arrow from '../svg/PostLinkArrow.svg';
 const Wrapper = styled(Link)`
   display: grid;
   grid-template-areas: "image" "title" "subtitle" "button";
-  grid-template-rows: auto auto 1rem 3.5rem;
-  grid-row-gap: 1rem;
+  grid-template-rows: auto auto auto 3rem;
+  grid-row-gap: 1.5rem;
   text-decoration: none;
+  box-shadow: 4px 4px 0 ${colors.colors.green};
+  border: .1rem solid ${colors.greys.seven};
+  padding: 1rem 1rem 1rem 2rem;
+
+  &:hover {
+    border: .1rem solid ${colors.colors.orange};
+  }
+
+  &:active {
+    box-shadow: 4px 4px 0 ${colors.greys.six};
+  }
 `;
 
 const ArrowWrapper = styled.div`
+  display: grid;
   width: auto;
-  align-self: end;
+  align-self: center;
+  justify-items: left;
+  margin: 0 1rem 0 0;
 
   path {
     fill: ${(props) => (props.isHovered ? colors.colors.orange : colors.greys.four)};
@@ -37,22 +51,30 @@ function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date }) {
       onMouseLeave={() => setIsHovered(false)}
       to={slug}
     >
-      {featuredImage && (
+      {featuredImage ? (
         <GatsbyImage
-          style={{ width: '400px' }}
+          style={{ width: '400px', justifySelf: 'center' }}
           image={featuredImage.childImageSharp.gatsbyImageData}
           alt={title}
         />
-      )}
+      )
+        : <div style={{ height: 0 }} />}
       {makeSmall
         ? <Heading1Small lineHeight={1.5}>{title}</Heading1Small>
-        : <Heading1Large>{title}</Heading1Large>}
-      <Label color={colors.colors.purple}>
-        {date && `${date} - `}
+        : <Heading1Large margin="0 0 0 0">{title}</Heading1Large>}
+      <Label color={colors.colors.purple} lineHeight={1.5}>
+        {date && (
+        <>
+          <span style={{ fontWeight: 700 }}>{date}</span>
+          {' '}
+          -
+          {' '}
+        </>
+        )}
         {subtitle}
       </Label>
       <ArrowWrapper to={slug} isHovered={isHovered}>
-        <Arrow />
+        <Arrow style={{ justifySelf: 'end' }} />
       </ArrowWrapper>
     </Wrapper>
   );
