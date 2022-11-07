@@ -13,7 +13,7 @@ const Wrapper = styled.footer`
   justify-items: end;
   z-index: 1000;
   background: ${colors.greys.one};
-  border-top: 1px ${colors.greys.three} solid;
+  border-top: 1px ${colors.greys.two} solid;
 `;
 
 const LinkWrapper = styled.div`

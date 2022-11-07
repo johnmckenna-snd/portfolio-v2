@@ -7,16 +7,88 @@ tags: ["react", "cloudfront", "aws", "github actions", "ci/cd"]
 featuredImage: "../../images/react-logo.png"
 ---
 
-![sndwrks logo](../../images/sndwrks_logo_blacktext.png)
+![React Logo](../../images/react-logo.png)
 
-# Big Yeet
+# Goal
 
-## Smaller Yeet
+The idea here is to serve a React app from an S3 bucket using Cloudfront as a CDN and deploy it via Github.
 
-[Link]()
+## What do you need?
 
-Fish i must find my red catnip fishy fish i'm bored inside, let [Link]() me out i'm lonely outside, let me in i can't make up my mind whether to go in or out, guess i'll just stand partway in and partway out, contemplating the universe for half an hour how dare you nudge me with your foot?!?! leap into the air in greatest offense!. Pet me pet me don't pet me. Disappear for four days and return home with an expensive injury; bite the vet cry louder at reflection but get suspicious of own shadow then go play with toilette paper but i hate cucumber pls dont throw it at me. Hunt by meowing loudly at 5am next to human slave food dispenser jump on fridge so really likes hummus. Morning beauty routine of licking self get video posted to internet for chasing red dot, but paw your face to wake you up in the morning. Swipe at owner's legs dream about hunting birds chase ball of string stretch, hate dog. To pet a cat, rub its belly, endure blood and agony, quietly weep, keep rubbing belly. Ask for petting. Whenever a door is opened, rush in before the human. Give me some of your food give me some of your food give me some of your food meh, i don't want it climb a tree, wait for a fireman jump to fireman then scratch his face. Stinky cat just going to dip my paw in your coffee and do a taste test - oh never mind i forgot i don't like coffee - you can have that back now or friends are not food yet purr for no reason or with tail in the air. Head nudges play riveting piece on synthesizer keyboard. Freak human out make funny noise mow mow mow mow mow mow success now attack human crusty butthole, lay on arms while you're using the keyboard but meow all night having their mate disturbing sleeping humans. Ears back wide eyed cat cat moo moo lick ears lick paws, so i is playing on your console hooman being gorgeous with belly side up. Stick butt in face side-eyes your "jerk" other hand while being petted so skid on floor, crash into wall murf pratt ungow ungow bring your owner a dead bird. Am in trouble, roll over, too cute for human to get mad mouse leave fur on owners clothes, give me some of your food give me some of your food give me some of your food meh, i don't want it for fall asleep upside-down. Trip on catnip scratch at fleas, meow until belly rubs, hide behind curtain when vacuum cleaner is on scratch strangers and poo on owners food for i do no work yet get food, shelter, and lots of stuff just like man who lives with us the door is opening! how exciting oh, it's you, meh. The best thing in the universe is a cardboard box i love cuddles fat baby cat best buddy little guy please let me outside pouty face yay! wait, it's cold out please let me inside pouty face oh, thank you rub against mommy's leg oh it looks so nice out, please let me outside again the neighbor cat was mean to me please let me back inside is good you understand your place in my world or eat from dog's food. Sleep nap. If it fits i sits love fish. Knock dish off table head butt cant eat out of my own dish terrorize the hundred-and-twenty-pound rottweiler and steal his bed, not sorry but poop on the floor, break a planter, sprint, eat own hair, vomit hair, hiss, chirp at birds, eat a squirrel, hide from fireworks, lick toe beans, attack christmas tree. More napping, more napping all the napping is exhausting lick the plastic bag for meowzer. Stare at owner accusingly then wink. Rub face on everything. Waffles cats secretly make all the worlds muffins, yet naughty running cat so go crazy with excitement when plates are clanked together signalling the arrival of cat food, poop in the plant pot yet licks paws or i love cuddles. 
+There's a few bits you'll need before we start.
 
-# Paragraph 2!
+- AWS Account
+- Github Account
+- npm installed on your machine
+- Basic knowledge of Javascript and the Cloud
 
-Where is it? i saw that bird i need to bring it home to mommy squirrel! cats secretly make all the worlds muffins yet ptracy eat too much then proceed to regurgitate all over living room carpet while humans eat dinner weigh eight pounds but take up a full-size bed dead stare with ears cocked jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub and meows when owner fills food dish the cat knocks over the food dish cat slides down the water slide and into pool and swims even though it does not like water. Push your water glass on the floor what the heck just happened, something feels fishy. Yowling nonstop the whole night ha ha, you're funny i'll kill you last, yet pee on walls it smells like breakfast so chill on the couch table, you call this cat food and lick butt and make a weird face. Scratch so owner bleeds chase mice. Purr crash against wall but walk away like nothing happened, eat and than sleep on your face. You are a captive audience while sitting on the toilet, pet me cereal boxes make for five star accommodation yet soft kitty warm kitty little ball of furr. Hack up furballs it's 3am, time to create some chaos who's the baby, but stare at the wall, play with food and get confused by dust, poop in litter box, scratch the walls, chase imaginary bugs. Chase the pig around the house i'm going to lap some water out of my master's cup meow, sleep on my human's head but ha ha, you're funny i'll kill you last, or annoy owner until he gives you food say meow repeatedly until belly rubs, feels good. Give me attention or face the wrath of my claws. Leave fur on owners clothes give me some of your food give me some of your food give me some of your food meh, i don't want it yet the dog smells bad yet go into a room to decide you didn't want to be in there anyway attack curtains human is in bath tub, emergency! drowning! meooowww! and i cry and cry and cry unless you pet me, and then maybe i cry just for fun. Sleep. Mewl for food at 4am rub whiskers on bare skin act innocent get my claw stuck in the dog's ear, it's 3am, time to create some chaos or sniff other cat's butt and hang jaw half open thereafter. 
+# Make the App
+
+The first thing we'll need is a basic React app if you already have one you want to deploy you can skip this step.
+
+## Create React App
+
+You can use the `create-react-app` package to quickly bootstrap a React app.
+
+```bash
+$ npx create-react-app s3-hosted-site-tutorial
+$ cd s3-hosted-site-tutorial
+$ npm start
+```
+
+We'll navigate to `http://localhost:3000` just to make sure our site works.
+
+## Add Boilerplate Github Action
+
+Next, we'll add a file that describes what we want the Github action to accomplish. This action uses a Github action VM running Ubuntu to run some commands. It is triggered only when we push to the production branch. This is helpful because it allows development to continue unimpeded until it's time to push the app live to production.
+
+First, it uses `actions/checkout` to pull the repo into the VM. Then, it removes the `package-lock.json` file. I like to do this step to make sure I'm getting the proper packages for the Host OS. I have encountered problems with different development environments muddying up a the `package-lock.json`. Then, it installs the npm packages and runs a build
+
+After that, the action moves into AWS territory. It first uses an action from AWS to setup the Credentials on the VM. Then, it performs a S3 sync to push the built code into the bucket. After that, the VM invalidates the previous Cloudfront cache. This is a very important step because we have to tell Cloudfront we've updated the contents of the bucket and all the information is has cached at the edge is no longer current. 
+
+**Create the File**
+
+1. Create a `.github` directory in your root project folder
+2. Create a `workflows` directory in the `.github` folder
+3. Finally create a file `deployToAWS.yml` in the `workflows` folder and paste the following in below. We will need to update some info in here after we create the resources on AWS.
+
+```yaml
+name: deployToAWS
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: rm package-lock.json
+      - run: npm install
+      - run: npm run build
+        env:
+          CI: false
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: AWS S3 Sync
+        run: aws s3 sync build s3://${{ secrets.AWS_S3_BUCKET_NAME }}/
+
+      - name: AWS Cloudfront Invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/index.html"
+```
+
+# AWS Setup
+
+Now, we'll move over to the AWS side of things. So go on ahead, and login to your AWS account.
+
+## Create the IAM User
+

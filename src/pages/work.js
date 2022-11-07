@@ -2,6 +2,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import { animated, useTransition, config } from 'react-spring';
 
 import Layout from '../components/layout';
 import PostLink from '../components/post-link';
@@ -23,18 +24,50 @@ const ListWrapper = styled.section`
 `;
 
 function WorkList ({ data: { allMarkdownRemark: { edges } } }) {
+  const transition = useTransition(edges, {
+    from: {
+      transform: `translate3d(0, 100px, 0)`,
+      opacity: 0,
+    },
+    enter: {
+      transform: `translate3d(0, 0px, 0)`,
+      opacity: 1,
+    },
+    leave: {
+      transform: `translate3d(0, 100px, 0)`,
+      opacity: 0,
+    },
+    trail: 180,
+    config: config.slow,
+    delay: 100,
+  });
   return (
     <Layout>
       <Wrapper>
         <ListWrapper>
-          {edges.map(({ node: { id, frontmatter: { slug, title, subtitle } } }) => (
-            <PostLink
-              key={id}
-              title={title}
-              subtitle={subtitle}
-              slug={slug}
-            />
-          ))}
+          {transition((styles, item) => {
+            const {
+              node: {
+                id,
+                frontmatter: {
+                  slug,
+                  title,
+                  subtitle,
+                },
+              },
+            } = item;
+
+            return (
+              <animated.div style={{ ...styles }}>
+                <PostLink
+                  key={id}
+                  title={title}
+                  subtitle={subtitle}
+                  slug={slug}
+                />
+              </animated.div>
+            );
+          })}
         </ListWrapper>
       </Wrapper>
     </Layout>

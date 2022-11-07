@@ -24,6 +24,10 @@ module.exports = {
               backgroundColor: 'transparent',
             },
           },
+          {
+            resolve: 'gatsby-remark-highlight-code',
+            options: { theme: 'one-light' },
+          },
         ],
       },
     },

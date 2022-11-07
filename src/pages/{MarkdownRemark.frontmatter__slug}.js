@@ -3,10 +3,15 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import RehypeReact from 'rehype-react';
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
+
+import { colors } from '../styles/colors';
+import { fonts } from '../styles/fonts';
 
 import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink } from '../components/text';
 import Layout from '../components/layout';
-import { colors } from '../styles/colors';
+
+deckDeckGoHighlightElement();
 
 const ModifiedHeading2 = styled(Heading2)`
   margin: 4rem 0 2rem 0;
@@ -61,22 +66,37 @@ const HeadingWrapper = styled.div`
 const MarkdownWrapper = styled.div`
   grid-area: content;
   margin: 0 0 40vh 2rem;
-  max-width: 65ch;
+  max-width: 70ch;
   box-shadow: 4px 4px 0 ${colors.colors.green};
   border: .1rem solid ${colors.greys.seven};
   padding: 0 2rem 2rem 2rem;
 
-  ul {
-    list-style: none;
-  }
-
-  li::before {
-    content: "~ ";
-    color: ${colors.colors.orange};
+  ol, ul {
+    line-height: 2;
   }
 
   li {
+    font-size: 1.1rem;
     margin: 1rem 0 0 0;
+  }
+
+  code {
+    background-color: ${colors.greys.six};
+    color: ${colors.greys.one};
+    padding: 0 .5rem 0 .5rem;
+    font-family: ${fonts.mono.fontFamily};
+    font-weight: ${fonts.mono.light.weight};
+    font-style: ${fonts.mono.light.style};
+    font-size: .9rem;
+    border-radius: 5px;
+  }
+
+  deckgo-highlight-code {
+    margin: 2rem 0 3rem 0;
+    box-shadow: none;
+    border: .1rem solid ${colors.greys.seven};
+    border-radius: 0px;
+    box-shadow: 4px 4px 0 ${colors.colors.orange};
   }
 `;
 

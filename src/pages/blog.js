@@ -2,6 +2,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import { animated, useTransition, config } from 'react-spring';
 
 import Layout from '../components/layout';
 import PostLink from '../components/post-link';
@@ -23,34 +24,57 @@ const ListWrapper = styled.section`
 `;
 
 function BlogList ({ data: { allMarkdownRemark: { edges } } }) {
+  const transition = useTransition(edges, {
+    from: {
+      transform: `translate3d(0, 200px, 0)`,
+      opacity: 0,
+    },
+    enter: {
+      transform: `translate3d(0, 0px, 0)`,
+      opacity: 1,
+    },
+    leave: {
+      transform: `translate3d(0, 200px, 0)`,
+      opacity: 0,
+    },
+    trail: 250,
+    config: config.slow,
+    delay: 100,
+  });
   return (
     <Layout>
       <Wrapper>
         <ListWrapper>
-          {edges.map(({
-            node: {
-              id,
-              frontmatter: {
-                slug,
-                title,
-                subtitle,
-                tags,
-                featuredImage,
-                date,
+          {transition((styles, item) => {
+            const {
+              node: {
+                id,
+                frontmatter: {
+                  slug,
+                  title,
+                  subtitle,
+                  tags,
+                  featuredImage,
+                  date,
+                },
               },
-            },
-          }) => (
-            <PostLink
-              key={id}
-              title={title}
-              subtitle={subtitle}
-              slug={slug}
-              makeSmall
-              tags={tags}
-              featuredImage={featuredImage}
-              date={date}
-            />
-          ))}
+            } = item;
+
+            return (
+              <animated.div style={{ ...styles }}>
+                <PostLink
+                  key={id}
+                  title={title}
+                  subtitle={subtitle}
+                  slug={slug}
+                  makeSmall
+                  tags={tags}
+                  featuredImage={featuredImage}
+                  date={date}
+                />
+              </animated.div>
+            );
+          })}
         </ListWrapper>
       </Wrapper>
     </Layout>

@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { animated, useTransition, config } from 'react-spring';
 
 import { colors } from '../styles/colors';
 
@@ -30,6 +31,17 @@ const NavWrapper = styled.nav`
 `;
 
 function Hero () {
+  const [cta, setCta] = useState([]);
+
+  useEffect(() => {
+    const ctaInitial = [
+      {
+        component: (
+          <span>Hello</span>
+        ),
+      },
+    ]
+  })
   return (
     <Wrapper>
       <CTAWrapper>

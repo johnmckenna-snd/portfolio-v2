@@ -17,7 +17,7 @@ const ContentWrapper = styled.div`
   grid-area: content;
   display: grid;
   grid-template-areas: "who-am-i" "paragraph" "cta-button";
-  grid-template-rows: 14rem auto 20rem;
+  grid-template-rows: 14rem 30rem auto;
   margin: 13rem 0 0 0;
 `;
 
@@ -25,6 +25,9 @@ const ParagraphWrapper = styled.div`
   grid-area: paragraph;
   width: 65ch;
   margin: 0 0 0 .6rem;
+  box-shadow: 4px 4px 0 ${colors.colors.green};
+  border: .1rem solid ${colors.greys.seven};
+  padding: 1rem 2rem 2rem 2rem;
 `;
 
 function About () {

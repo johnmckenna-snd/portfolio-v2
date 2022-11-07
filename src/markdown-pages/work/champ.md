@@ -8,7 +8,7 @@ subtitle: "Application Developer & Contractor"
 # Overview
 [Website](https://champds.com)
 
-I started off at Champion Data Systems (Champ) as a contractor before they eventually hired me as an application developer. As the only employee, I had a lot of responsibilities. I worked mostly as a developer, and occasionally did ux and marketing duties.
+I started off at Champion Data Systems (Champ) as a contractor before they eventually hired me as an application developer. As the only employee, I had a broad variety of projects. I worked mostly as a developer, and occasionally did ux and marketing duties.
 
 - Microservices (node.js)
 - Cloud: GCP/AWS/Digital Ocean/Mongo Atlas

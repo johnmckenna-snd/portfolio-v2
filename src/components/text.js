@@ -66,7 +66,6 @@ export const Heading1Large = styled.h1`
   justify-self: ${justifySelf};
   align-self: ${alignSelf};
   line-height: ${lineHeight};
-  text-shadow: 0 4px 0 ${colors.colors.green};
   ${mediaQuery}
 `;
 
@@ -84,7 +83,6 @@ export const Heading1Small = styled.h1`
   justify-self: ${justifySelf};
   align-self: ${alignSelf};
   line-height: ${lineHeight};
-  text-shadow: 0 4px 0 ${colors.colors.green};
   ${mediaQuery}
 `;
 
@@ -96,7 +94,7 @@ export const Heading2 = styled.h2`
   font-weight: ${fonts.mono.bold.weight};
   font-style: ${fonts.mono.bold.style};
   font-size: 2.5rem;
-  color: ${colorLighter};
+  color: ${color};
   margin: ${margin};
   padding: ${padding};
   justify-self: ${justifySelf};
@@ -115,7 +113,7 @@ export const Heading3 = styled.h3`
   font-weight: ${fonts.mono.bold.weight};
   font-style: ${fonts.mono.bold.style};
   font-size: 2rem;
-  color: ${colorLighter};
+  color: ${color};
   margin: ${margin};
   padding: ${padding};
   justify-self: ${justifySelf};
@@ -133,7 +131,7 @@ export const Paragraph = styled.p`
   font-family: ${fonts.regular.fontFamily};
   font-weight: ${fonts.regular.regular.weight};
   font-style: ${fonts.regular.regular.style};
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: ${color};
   margin: ${margin};
   padding: ${padding};
