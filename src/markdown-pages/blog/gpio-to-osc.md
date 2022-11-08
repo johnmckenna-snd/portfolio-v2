@@ -29,5 +29,3 @@ The Application is developed in Javascript and ran via Docker. I used node.js fo
 ## Hardware
 
 For the first version of the hardware, I used a Odroid C4 though I would have preferred a Raspberry Pi they are too hard to find. A magnetic door sensor was used to trigger the GPIO. I used a PoE to 9V Barrel Connector to provide power. All the bits were mounted to a sled that I printed to allow the whole thing to be mounted to the set.
-
-![Shot of the Hardware](../../images/gpio-to-osc.jpg)

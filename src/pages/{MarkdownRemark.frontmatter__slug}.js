@@ -8,7 +8,7 @@ import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/
 import { colors } from '../styles/colors';
 import { fonts } from '../styles/fonts';
 
-import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink } from '../components/text';
+import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink, Heading4 } from '../components/text';
 import Layout from '../components/layout';
 
 deckDeckGoHighlightElement();
@@ -19,6 +19,10 @@ const ModifiedHeading2 = styled(Heading2)`
 
 const ModifiedHeading3 = styled(Heading3)`
   margin: 3rem 0 2rem 0;
+`;
+
+const ModifiedHeading4 = styled(Heading4)`
+  margin: 2rem 0 1rem 0;
 `;
 
 const ModifiedParagraph = styled(Paragraph)`
@@ -33,6 +37,7 @@ const renderAst = new RehypeReact({
   components: {
     h1: ModifiedHeading2,
     h2: ModifiedHeading3,
+    h3: ModifiedHeading4,
     p: ModifiedParagraph,
     a: ModifiedBlogLink,
   },

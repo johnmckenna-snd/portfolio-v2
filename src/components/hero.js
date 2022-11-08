@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { animated, useTransition, config } from 'react-spring';
+import { animated, useTransition, config, useSpringRef, useChain } from 'react-spring';
 
 import { colors } from '../styles/colors';
 
@@ -32,41 +32,116 @@ const NavWrapper = styled.nav`
 
 function Hero () {
   const [cta, setCta] = useState([]);
+  const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
     const ctaInitial = [
       {
         component: (
-          <span>Hello</span>
+          <JumboLarge
+            margin="0 0 0 11.4rem"
+          >
+            Hello
+            <span style={{ color: colors.colors.orange }}>,</span>
+            {' '}
+            I'm John
+            <span style={{ color: colors.colors.orange, margin: '0 0 0 .1rem' }}>:</span>
+          </JumboLarge>
         ),
       },
-    ]
-  })
+      {
+        component: (
+          <JumboLarge margin="-2rem 0 0 0">
+            Designer
+            {' '}
+            <span style={{ color: colors.colors.purple, margin: '0 0 0 .4rem' }}>&</span>
+            {' '}
+            <span style={{ margin: '0 0 0 1.1rem' }}>Developer</span>
+          </JumboLarge>
+        ),
+      },
+    ];
+
+    setCta(ctaInitial);
+
+    const navLinkInitial = [
+      {
+        name: 'Work',
+        link: '/work',
+      },
+      {
+        name: 'Blog',
+        link: '/blog',
+      },
+      {
+        name: 'About',
+        link: '/about',
+      },
+      {
+        name: 'Contact',
+        link: '/contact',
+      },
+    ];
+
+    setNavLinks(navLinkInitial);
+  }, []);
+
+  const ctaApi = useSpringRef();
+  const ctaTransition = useTransition(cta, {
+    ref: ctaApi,
+    from: {
+      transform: `translate3d(200px, 0, 0)`,
+      opacity: 0,
+    },
+    enter: {
+      transform: `translate3d(0px, 0, 0)`,
+      opacity: 1,
+    },
+    leave: {
+      transform: `translate3d(100px, 0, 0)`,
+      opacity: 0,
+    },
+    trail: 250,
+    config: config.slow,
+  });
+
+  const navLinksApi = useSpringRef();
+  const navLinksTransition = useTransition(navLinks, {
+    ref: navLinksApi,
+    from: {
+      transform: `translate3d(0, 100px, 0)`,
+      opacity: 0,
+    },
+    enter: {
+      transform: `translate3d(0, 0px, 0)`,
+      opacity: 1,
+    },
+    leave: {
+      transform: `translate3d(0, 100px, 0)`,
+      opacity: 0,
+    },
+    trail: 180,
+    config: config.slow,
+    delay: 500,
+  });
+
+  useChain([ctaApi, navLinksApi], [0, 0.2]);
+
   return (
     <Wrapper>
       <CTAWrapper>
-        <JumboLarge
-          margin="0 0 0 11.4rem"
-        >
-          Hello
-          <span style={{ color: colors.colors.orange }}>,</span>
-          {' '}
-          I'm John
-          <span style={{ color: colors.colors.orange, margin: '0 0 0 .1rem' }}>:</span>
-        </JumboLarge>
-        <JumboLarge margin="-2rem 0 0 0">
-          Designer
-          {' '}
-          <span style={{ color: colors.colors.purple, margin: '0 0 0 .4rem' }}>&</span>
-          {' '}
-          <span style={{ margin: '0 0 0 1.1rem' }}>Developer</span>
-        </JumboLarge>
+        {ctaTransition((styles, item) => (
+          <animated.div style={{ ...styles }}>
+            {item.component}
+          </animated.div>
+        ))}
       </CTAWrapper>
       <NavWrapper>
-        <NavLinkBig to="/work">Work</NavLinkBig>
-        <NavLinkBig to="/blog">Blog</NavLinkBig>
-        <NavLinkBig to="/about">About</NavLinkBig>
-        <NavLinkBig to="/contact">Contact</NavLinkBig>
+        {navLinksTransition((styles, item) => (
+          <animated.div style={{ ...styles }}>
+            <NavLinkBig to={item.link}>{item.name}</NavLinkBig>
+          </animated.div>
+        ))}
       </NavWrapper>
     </Wrapper>
   );

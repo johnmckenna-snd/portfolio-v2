@@ -124,6 +124,25 @@ export const Heading3 = styled.h3`
   ${mediaQuery}
 `;
 
+export const Heading4 = styled.h4`
+  grid-area: ${gridArea};
+  border-top: ${borderTop};
+  border-bottom: ${borderBottom};
+  font-family: ${fonts.mono.fontFamily};
+  font-weight: ${fonts.mono.bold.weight};
+  font-style: ${fonts.mono.bold.style};
+  font-size: 1.5rem;
+  color: ${color};
+  margin: ${margin};
+  padding: ${padding};
+  justify-self: ${justifySelf};
+  align-self: ${alignSelf};
+  line-height: ${lineHeight};
+  text-decoration: none;
+  height: ${height};
+  ${mediaQuery}
+`;
+
 export const Paragraph = styled.p`
   grid-area: ${gridArea};
   border-top: ${borderTop};
