@@ -1,9 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/colors';
 
+import { WindowContext } from '../context/windowContext';
+
 import { Label, NavLink } from './text';
+import NavButtons from './nav-buttons';
+import BurgerIcon from './burger-icon';
+import NavBurger from './nav-burger';
 
 const Wrapper = styled.header`
   z-index: 1000;
@@ -12,6 +17,16 @@ const Wrapper = styled.header`
   grid-template-areas: "nav-left nav-right";
   height: 3em;
   background: ${colors.greys.one};
+
+  @media (max-width: 1400px) {
+    height: 2.3rem;
+  }
+  @media (max-width: 840px) {
+    height: 2rem;
+  }
+  @media (max-width: 580px) {
+    height: 1.8rem;
+  }
 `;
 
 const NavLeft = styled.div`
@@ -20,16 +35,24 @@ const NavLeft = styled.div`
   grid-template-areas: "line title";
   grid-template-columns: 80px auto;
   height: inherit;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 30px auto;
+  }
 `;
 
 const LineWrapper = styled.div`
   grid-area: line;
-  padding: 0 0 0 2rem;
+  padding: 0 0 0 2.6rem;
   height: 80vh;
+
+  @media (max-width: 700px) {
+    padding: 0 0 0 1rem;
+  }
 `;
 
 const SideWaysTextWrapper = styled.div`
-  transform: translate(-193px, 210px) rotate(270deg);
+  transform: translate(-201px, 210px) rotate(270deg);
   width: 25rem;
   justify-items: end;
   text-align: end;
@@ -38,14 +61,6 @@ const SideWaysTextWrapper = styled.div`
 const NavRight = styled.div`
   display: grid;
   justify-items: end;
-`;
-
-const NavWrapper = styled.nav`
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min-content;
-  grid-column-gap: 2rem;
-  margin: 0 2rem 0 0;
 `;
 
 const easterEggOptions = [
@@ -57,8 +72,15 @@ const easterEggOptions = [
 ];
 
 function Nav () {
+  const { screenWidth } = useContext(WindowContext);
+
   const [showNav, setShowNav] = useState(false);
   const [easterEggIndex, setEasterEggIndex] = useState(0);
+  const [isBurgerNavShowing, setIsBurgerNavShowing] = useState(false);
+
+  function handleBurgerClick () {
+    setIsBurgerNavShowing(!isBurgerNavShowing);
+  }
 
   function handleClick () {
     const newIndex = (easterEggIndex + 1) % easterEggOptions.length;
@@ -79,8 +101,13 @@ function Nav () {
     <Wrapper>
       <NavLeft>
         <LineWrapper>
-          <svg viewBox="0 0 20 100" height="400px" width="80px" xmlns="http://www.w3.org/2000/svg">
-            <line x1="2" y1="7" x2="2" y2="100" stroke={colors.colors.orange} strokeWidth=".25" />
+          <svg
+            viewBox={`0 0 1 ${screenWidth < 600 ? 340 : 400}`}
+            height={screenWidth < 600 ? '340px' : '400px'}
+            width="1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line x1="0.5" y1="28" x2="0.5" y2={screenWidth < 600 ? 340 : 400} stroke={colors.colors.orange} />
           </svg>
           <SideWaysTextWrapper>
             <Label onClick={handleClick} style={{ cursor: 'help' }}>{easterEggOptions[easterEggIndex]}</Label>
@@ -89,14 +116,25 @@ function Nav () {
         <NavLink margin="0 0 0 0" height="3em" to="/">John McKenna</NavLink>
       </NavLeft>
       <NavRight>
-        {showNav && (
-        <NavWrapper>
-          <NavLink margin="0 0 0 0" to="/work">Work</NavLink>
-          <NavLink margin="0 0 0 0" to="/blog">Blog</NavLink>
-          <NavLink margin="0 0 0 0" to="/about">About</NavLink>
-          <NavLink margin="0 0 0 0" to="/contact">Contact</NavLink>
-        </NavWrapper>
-        )}
+        {showNav && (screenWidth < 800
+          ? (
+            <>
+              <BurgerIcon
+                width="2.2rem"
+                height="2.2rem"
+                margin=".1rem 0 0 0"
+                onClick={handleBurgerClick}
+                isX={isBurgerNavShowing}
+              />
+              <NavBurger
+                isShowing={isBurgerNavShowing}
+                setIsShowing={setIsBurgerNavShowing}
+              />
+            </>
+          )
+          : (
+            <NavButtons />
+          ))}
       </NavRight>
     </Wrapper>
   );

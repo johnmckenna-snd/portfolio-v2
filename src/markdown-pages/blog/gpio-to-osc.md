@@ -22,7 +22,7 @@ I wanted to develop a more modern way to receive triggers in playback software. 
 
 ## Application
 
-The Application is developed in Javascript and ran via Docker. I used node.js for the server, and React for the website (probably a bit overkill). I like using docker-compose to run apps because it makes it very easy.
+The Application is developed in Javascript and ran via Docker. I used node.js for the server, and React for the website. I like using docker-compose to run apps because it makes it very easy. The application consists of two containers: one for the node.js server and and other to serve the react app and host an NGINX reverse proxy.
 
 ![Screenshot of the Application](../../images/gpio-to-osc-screenshot.png)
 

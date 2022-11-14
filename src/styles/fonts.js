@@ -14,19 +14,19 @@ font-weight: 700;
 font-style: normal;
 
 Regular
-font-family: elza-text,sans-serif;
+font-family: dinosaur, sans-serif;
 font-weight: 400;
 font-style: normal;
 
-font-family: elza-text,sans-serif;
+font-family: dinosaur,sans-serif;
 font-weight: 400;
 font-style: italic;
 
-font-family: elza-text,sans-serif;
+font-family: dinosaur,sans-serif;
 font-weight: 700;
 font-style: normal;
 
-font-family: elza-text,sans-serif;
+font-family: dinosaur,sans-serif;
 font-weight: 700;
 font-style: italic;
 */
@@ -52,7 +52,7 @@ export const fonts = {
     },
   },
   regular: {
-    fontFamily: 'elza-text, sans-serif',
+    fontFamily: 'dinosaur, sans-serif',
     regular: {
       weight: 400,
       style: 'normal',

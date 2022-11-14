@@ -37,7 +37,7 @@ module.exports = {
         enableListener: true,
         web: [
           {
-            name: ['timonium', 'auger-mono', 'elza-text'],
+            name: ['timonium', 'auger-mono', 'dinosaur'],
             file: `https://use.typekit.net/kjq1jkc.css`,
           },
         ],

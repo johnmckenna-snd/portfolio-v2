@@ -56,6 +56,13 @@ const ContentWrapper = styled.section`
   grid-template-rows: auto auto;
   margin: 10rem 0 0 0;
   max-width: 800px;
+
+  @media (max-width: 1000px) {
+    margin: 10rem 2rem 0 5.5rem;
+  }
+  @media (max-width: 700px) {
+    margin: 10rem 2rem 0 2.2rem;
+  }
 `;
 
 const HeadingWrapper = styled.div`
@@ -66,6 +73,10 @@ const HeadingWrapper = styled.div`
   box-shadow: 4px 4px 0 ${colors.colors.green};
   border: .1rem solid ${colors.greys.seven};
   padding: 0 2rem 2rem 2rem;
+
+  @media (max-width: 460px) {
+    padding: 0 1rem 2rem 1rem;
+  }
 `;
 
 const MarkdownWrapper = styled.div`
@@ -74,20 +85,37 @@ const MarkdownWrapper = styled.div`
   max-width: 70ch;
   box-shadow: 4px 4px 0 ${colors.colors.green};
   border: .1rem solid ${colors.greys.seven};
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 4rem 2rem 4rem;
+
+  @media (max-width: 830px) {
+    padding: 0 2rem 2rem 2rem;
+    max-width: 70vw;
+  }
+
+  @media (max-width: 460px) {
+    padding: 0 1rem 2rem 1rem;
+    margin: 0 0 40vh 0rem;
+  }
 
   ol, ul {
-    line-height: 2;
+    line-height: 1.2;
   }
 
   li {
     font-size: 1.1rem;
     margin: 1rem 0 0 0;
+    font-family: ${fonts.regular.fontFamily};
+    font-weight: ${fonts.regular.regular.weight};
+    font-style: ${fonts.regular.regular.style};
+
+    @media (max-width: 1400px) {
+      font-size: 1rem;
+    }
   }
 
   code {
-    background-color: ${colors.greys.six};
-    color: ${colors.greys.one};
+    background-color: ${colors.greys.two};
+    color: ${colors.greys.six};
     padding: 0 .5rem 0 .5rem;
     font-family: ${fonts.mono.fontFamily};
     font-weight: ${fonts.mono.light.weight};

@@ -17,8 +17,24 @@ const ContentWrapper = styled.div`
   grid-area: content;
   display: grid;
   grid-template-areas: "who-am-i" "paragraph" "cta-button";
-  grid-template-rows: 14rem 30rem auto;
+  grid-template-rows: 14rem min-content auto;
   margin: 13rem 0 0 0;
+
+  @media (max-width: 1600px) {
+    margin: 8rem 0 0 0;
+  }
+  @media (max-width: 820px) {
+    grid-template-rows: 10rem min-content  auto;
+    margin: 8rem 2rem 0 5.5rem;
+  }
+  @media (max-width: 700px) {
+    grid-template-rows: 10rem min-content auto;
+    margin: 8rem 2rem 0 1.8rem;
+  }
+  @media (max-width: 580px) {
+    grid-template-rows: 7rem min-content auto;
+    margin: 8rem 2rem 0 1.8rem;
+  }
 `;
 
 const ParagraphWrapper = styled.div`
@@ -28,6 +44,11 @@ const ParagraphWrapper = styled.div`
   box-shadow: 4px 4px 0 ${colors.colors.green};
   border: .1rem solid ${colors.greys.seven};
   padding: 1rem 2rem 2rem 2rem;
+
+  @media (max-width: 820px) {
+    max-width: 65ch;
+    width: auto;
+  }
 `;
 
 function About () {

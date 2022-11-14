@@ -22,6 +22,11 @@ const ContentWrapper = styled.div`
   margin: 13rem 0 0 0;
   grid-template-areas: "cta" "form";
   grid-template-rows: 11rem auto;
+
+  @media (max-width: 1600px) {
+    margin: 5rem 0 0 0;
+    grid-template-rows: 9rem auto;
+  }
 `;
 
 const FormWrapper = styled.form`
@@ -30,6 +35,12 @@ const FormWrapper = styled.form`
   grid-template-areas: "form-inputs submit";
   grid-template-columns: 34em auto;
   column-gap: 8rem;
+
+  @media (max-width: 1200px) {
+    grid-template-areas: "form-inputs" "submit";
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, min-content);
+  }
 `;
 
 const InputsWrapper = styled.div`
@@ -38,6 +49,10 @@ const InputsWrapper = styled.div`
   grid-template-areas: "name" "email" "message";
   grid-template-rows: 6rem 6rem 20rem;
   row-gap: 1rem;
+
+  @media (max-width: 1200px) {
+    grid-template-rows: 4.5rem 4.5rem 16rem;
+  }
 `;
 
 const Button = styled.button`
@@ -55,6 +70,10 @@ const Button = styled.button`
     path {
       fill: ${colors.colors.green};
     }
+  }
+
+  @media (max-width: 1200px) {
+
   }
 `;
 

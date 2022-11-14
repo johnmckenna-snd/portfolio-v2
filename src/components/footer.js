@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { WindowContext } from '../context/windowContext';
 
 import { colors } from '../styles/colors';
 
@@ -13,7 +15,6 @@ const Wrapper = styled.footer`
   justify-items: end;
   z-index: 1000;
   background: ${colors.greys.one};
-  border-top: 1px ${colors.greys.two} solid;
 `;
 
 const LinkWrapper = styled.div`
@@ -24,6 +25,14 @@ const LinkWrapper = styled.div`
   justify-items: end;
   align-items: end;
   margin: 0 1.5rem .8rem 0;
+`;
+
+const LineWrapper = styled.div`
+  margin: 0 0 .2rem 0;
+
+  @media (max-width: 1400px) {
+    margin: 0 0 .1rem 0;
+  }
 `;
 
 const footerLinks = [
@@ -42,6 +51,8 @@ const footerLinks = [
 ];
 
 function Footer () {
+  const { screenWidth } = useContext(WindowContext);
+
   return (
     <Wrapper>
       <LinkWrapper>
@@ -57,14 +68,17 @@ function Footer () {
             {i < footerLinks.length - 1 && <Label key={text} margin="0 0 0 0">-</Label>}
           </>
         ))}
-        <svg
-          viewBox="0 0 50 4"
-          height="16px"
-          width="250px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line x1="0" y1="2" x2="100" y2="2" stroke={colors.colors.purple} strokeWidth=".25" />
-        </svg>
+        <LineWrapper>
+          <svg
+            viewBox={`0 0 ${screenWidth < 600 ? 80 : 250} 1`}
+            height="1"
+            width={screenWidth < 600 ? '80px' : '250px'}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line x1="20" y1="0.5" x2={screenWidth < 600 ? 80 : 250} y2="0.5" stroke={colors.colors.purple} strokeWidth="1" />
+          </svg>
+        </LineWrapper>
+
       </LinkWrapper>
     </Wrapper>
   );

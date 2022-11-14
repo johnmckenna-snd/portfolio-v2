@@ -33,6 +33,19 @@ export const JumboLarge = styled.h1`
   align-self: ${alignSelf};
   line-height: ${lineHeight};
   ${mediaQuery}
+
+  @media (max-width: 1490px) {
+    font-size: 7rem;
+  }
+  @media (max-width: 820px) {
+    font-size: 5rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 4rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 3.4rem;
+  }
 `;
 
 export const JumboSmall = styled.h1`
@@ -50,6 +63,16 @@ export const JumboSmall = styled.h1`
   align-self: ${alignSelf};
   line-height: ${lineHeight};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 5rem;
+  }
+  @media (max-width: 820px) {
+    font-size: 4rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 3rem;
+  }
 `;
 
 export const Heading1Large = styled.h1`
@@ -67,6 +90,19 @@ export const Heading1Large = styled.h1`
   align-self: ${alignSelf};
   line-height: ${lineHeight};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 3.5rem;
+  }
+  @media (max-width: 820px) {
+    font-size: 3.2rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 2.9rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 2rem;
+  }
 `;
 
 export const Heading1Small = styled.h1`
@@ -84,6 +120,17 @@ export const Heading1Small = styled.h1`
   align-self: ${alignSelf};
   line-height: ${lineHeight};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 820px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const Heading2 = styled.h2`
@@ -103,6 +150,16 @@ export const Heading2 = styled.h2`
   text-decoration: none;
   height: ${height};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 820px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const Heading3 = styled.h3`
@@ -122,6 +179,16 @@ export const Heading3 = styled.h3`
   text-decoration: none;
   height: ${height};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 1.7rem;
+  }
+  @media (max-width: 820px) {
+    font-size: 1.4rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Heading4 = styled.h4`
@@ -141,6 +208,14 @@ export const Heading4 = styled.h4`
   text-decoration: none;
   height: ${height};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 820px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Paragraph = styled.p`
@@ -159,6 +234,10 @@ export const Paragraph = styled.p`
   line-height: ${lineHeight};
   transform: ${transform};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Label = styled.p`
@@ -177,6 +256,10 @@ export const Label = styled.p`
   line-height: ${lineHeight};
   transform: ${transform};
   ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: .9rem;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -200,6 +283,16 @@ export const NavLink = styled(Link)`
   &:hover {
     color: ${colors.colors.orange};
   }
+
+  @media (max-width: 1400px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 840px) {
+    font-size: 1.7rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const NavLinkBig = styled(Link)`
@@ -222,6 +315,14 @@ export const NavLinkBig = styled(Link)`
 
   &:hover {
     color: ${colors.colors.orange};
+  }
+
+  @media (max-width: 1400px) {
+    font-size: 2.2rem;
+  }
+
+  @media (max-width: 820px) {
+    font-size: 1.9rem;
   }
 `;
 
@@ -267,5 +368,13 @@ export const LabelLink = styled.a`
 
   &:hover {
     color: ${colors.colors.orange};
+  }
+
+  @media (max-width: 1400px) {
+    font-size: .9rem;
+  }
+
+  @media (max-width: 820px) {
+    font-size: .8rem;
   }
 `;

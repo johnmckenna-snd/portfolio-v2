@@ -255,11 +255,11 @@ Head back over to the Github repo you pushed earlier. We need to update some Act
 2. Click on Secrets -> Actions
 
 We need to add five secrets here for the Github Action to function:
-`AWS_ACCESS_KEY_ID`: This is from the IAM account creation
-`AWS_SECRET_ACCESS_KEY`: This is the secret from the IAM account creation
-`AWS_REGION`: This is the region you created the bucket in (i.e. us-east-1)
-`AWS_DISTRIBUTION_ID`: This is the Cloudfront Distribution ID (i.e. E3HVOWYX90TQCG)
-`AWS_S3_BUCKET_NAME`: The name of your bucket (i.e. s3-hosted-site-tutorial)
+1. `AWS_ACCESS_KEY_ID`: This is from the IAM account creation
+2. `AWS_SECRET_ACCESS_KEY`: This is the secret from the IAM account creation
+3. `AWS_REGION`: This is the region you created the bucket in (i.e. us-east-1)
+4. `AWS_DISTRIBUTION_ID`: This is the Cloudfront Distribution ID (i.e. E3HVOWYX90TQCG)
+5. `AWS_S3_BUCKET_NAME`: The name of your bucket (i.e. s3-hosted-site-tutorial)
 
 Sweet now all we need is a production branch in our repo to trigger the Action.
 

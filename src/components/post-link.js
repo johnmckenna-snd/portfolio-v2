@@ -27,6 +27,10 @@ const Wrapper = styled(Link)`
   &:active {
     box-shadow: 4px 4px 0 ${colors.greys.six};
   }
+
+  @media (max-width: 600px) {
+    padding: 0 1rem 0 1rem;
+  }
 `;
 
 const ArrowWrapper = styled.div`
@@ -40,6 +44,19 @@ const ArrowWrapper = styled.div`
     fill: ${(props) => (props.isHovered ? colors.colors.orange : colors.greys.four)};
   }
 
+  @media (max-width: 400px) {
+    width: 50vw;
+  }
+
+`;
+
+const GatsbyImageStyled = styled(GatsbyImage)`
+  width: 400px;
+  justify-self: center;
+
+  @media (max-width: 500px) {
+    width: auto;
+  }
 `;
 
 function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date }) {
@@ -52,8 +69,7 @@ function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date }) {
       to={slug}
     >
       {featuredImage ? (
-        <GatsbyImage
-          style={{ width: '400px', justifySelf: 'center' }}
+        <GatsbyImageStyled
           image={featuredImage.childImageSharp.gatsbyImageData}
           alt={title}
         />

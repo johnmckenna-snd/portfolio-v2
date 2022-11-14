@@ -19,6 +19,10 @@ const FormInputWrapper = styled.div`
   display: grid;
   grid-template-areas: "label" "input";
   grid-template-rows: 2.5em 3em;
+
+  @media (max-width: 1200px) {
+    grid-template-rows: 1.8em 3em;
+  }
 `;
 
 const TextAreaWrapper = styled.div`
@@ -26,6 +30,10 @@ const TextAreaWrapper = styled.div`
   display: grid;
   grid-template-areas: "label" "textarea";
   grid-template-rows: 2.5rem 17rem;
+
+  @media (max-width: 1200px) {
+    grid-template-rows: 1.8em 15rem;
+  }
 `;
 
 const FormLabel = styled.label`

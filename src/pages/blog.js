@@ -21,6 +21,17 @@ const ListWrapper = styled.section`
   row-gap: 4rem;
   margin: 10rem 0 40vh 0;
   max-width: 800px;
+
+  @media (max-width: 1000px) {
+    max-width: auto;
+    padding: 0 4rem 0 5.4rem;
+  }
+  @media (max-width: 700px) {
+    padding: 0 2rem 0 2rem;
+  }
+  @media (max-width: 650px) {
+    margin: 5rem 0 40vh 0;
+  }
 `;
 
 function BlogList ({ data: { allMarkdownRemark: { edges } } }) {
@@ -38,7 +49,10 @@ function BlogList ({ data: { allMarkdownRemark: { edges } } }) {
       opacity: 0,
     },
     trail: 250,
-    config: config.slow,
+    config: {
+      ...config.slow,
+      friction: 50,
+    },
     delay: 100,
   });
   return (
