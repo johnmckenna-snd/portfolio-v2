@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { colors } from '../styles/colors';
 
 import Layout from '../components/layout';
-import { JumboSmall, Paragraph } from '../components/text';
+import { JumboSmall, Paragraph } from '../components/ui/text';
 
 const Wrapper = styled.section`
   display: grid;
@@ -62,13 +62,13 @@ function About () {
           </JumboSmall>
           <ParagraphWrapper>
             <Paragraph lineHeight={2}>
-              I was born and raised in Colorado where I subsequently made my way to Penn State University. I studied Sound Design. I had always wanted to live in NYC, so I moved there.
+              I was born and raised in the mountains of Colorado. I subsequently proceeded to Penn State University, majoring in Sound Design. After college, I moved to NYC to live and work.
             </Paragraph>
             <Paragraph lineHeight={2} margin="2rem 0 0 0">
-              I worked my way through the live enterainment industry eventually landing as a theatrical sound designer. The global pandemic put a kibosh on live shows, so I learned web development.
+              I worked my way through the live entertainment industry; eventually, I landed as a theatrical sound designer with Broadway credits. The global pandemic put a kibosh on live shows, so I learned full-stack development.
             </Paragraph>
             <Paragraph lineHeight={2} margin="2rem 0 0 0">
-              I love making things. I use my 3D printer and CAD skills to build furniture and various other objects like tiny trashcans. I am most happiest when I’m creating something new.
+              I love designing and creating things. Using my  3d printer and CAD skills, I developed a furniture line and other products like tiny trashcans. I am happiest when I’m creating something new, physical or digital.
             </Paragraph>
           </ParagraphWrapper>
         </ContentWrapper>

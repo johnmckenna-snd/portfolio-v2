@@ -2,8 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors } from '../styles/colors';
-import { fonts } from '../styles/fonts';
+import { colors } from '../../styles/colors';
+import { fonts } from '../../styles/fonts';
 
 function gridAreaFunc (props) { return props.gridArea || ''; }
 function margin (props) { return props.margin || '.4em 0 .3rem 0'; }
@@ -23,6 +23,10 @@ const FormInputWrapper = styled.div`
   @media (max-width: 1200px) {
     grid-template-rows: 1.8em 3em;
   }
+
+  @media (max-width: 580px) {
+    grid-template-rows: 1.6em 2.6rem;
+  }
 `;
 
 const TextAreaWrapper = styled.div`
@@ -33,6 +37,10 @@ const TextAreaWrapper = styled.div`
 
   @media (max-width: 1200px) {
     grid-template-rows: 1.8em 15rem;
+  }
+
+  @media (max-width: 580px) {
+    grid-template-rows: 1.6em 10rem;
   }
 `;
 
@@ -50,6 +58,10 @@ const FormLabel = styled.label`
   line-height: ${lineHeight};
   transform: ${transform};
   ${mediaQuery}
+
+  @media (max-width: 580px) {
+    font-size: .9rem;
+  }
   `;
 
 const Input = styled.input`
@@ -75,6 +87,11 @@ const Input = styled.input`
 
   &::placeholder {
     color: ${colors.greys.six};
+  }
+
+  @media (max-width: 580px) {
+    font-size: 1.2rem;
+    padding: .1em 1em .2em 1em;
   }
 `;
 
@@ -102,6 +119,11 @@ const TextArea = styled.textarea`
 
   &::placeholder {
     color: ${colors.greys.five};
+  }
+
+  @media (max-width: 580px) {
+    font-size: 1.2rem;
+    padding: .1em 1em .2em 1em;
   }
 `;
 

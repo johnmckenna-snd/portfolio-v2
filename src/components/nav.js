@@ -5,9 +5,9 @@ import { colors } from '../styles/colors';
 
 import { WindowContext } from '../context/windowContext';
 
-import { Label, NavLink } from './text';
+import { Label, NavLink } from './ui/text';
 import NavButtons from './nav-buttons';
-import BurgerIcon from './burger-icon';
+import BurgerIcon from './ui/burger-icon';
 import NavBurger from './nav-burger';
 
 const Wrapper = styled.header`
@@ -102,12 +102,12 @@ function Nav () {
       <NavLeft>
         <LineWrapper>
           <svg
-            viewBox={`0 0 1 ${screenWidth < 600 ? 340 : 400}`}
-            height={screenWidth < 600 ? '340px' : '400px'}
+            viewBox={`0 0 1 ${screenWidth < 600 ? 300 : 400}`}
+            height={screenWidth < 600 ? '300px' : '400px'}
             width="1"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <line x1="0.5" y1="28" x2="0.5" y2={screenWidth < 600 ? 340 : 400} stroke={colors.colors.orange} />
+            <line x1="0.5" y1="28" x2="0.5" y2={screenWidth < 600 ? 300 : 400} stroke={colors.colors.orange} />
           </svg>
           <SideWaysTextWrapper>
             <Label onClick={handleClick} style={{ cursor: 'help' }}>{easterEggOptions[easterEggIndex]}</Label>

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-import { colors } from '../styles/colors';
-import { fonts } from '../styles/fonts';
+import { colors } from '../../styles/colors';
+import { fonts } from '../../styles/fonts';
 
 function gridArea (props) { return props.gridArea || ''; }
 function borderTop (props) { return props.borderTop || 'none'; }
@@ -376,5 +376,29 @@ export const LabelLink = styled.a`
 
   @media (max-width: 820px) {
     font-size: .8rem;
+  }
+`;
+
+export const Tag = styled.p`
+  grid-area: ${gridArea};
+  border: 1px solid ${colors.greys.seven};
+  font-family: ${fonts.mono.fontFamily};
+  font-weight: ${fonts.mono.light.weight};
+  font-style: ${fonts.mono.light.style};
+  font-size: 1rem;
+  white-space: nowrap;
+  color: ${colors.greys.seven};
+  background-color: ${colors.greys.one};
+  text-align: center;
+  margin: ${margin};
+  padding: .4rem 1rem .4rem 1rem;
+  justify-self: ${justifySelf};
+  align-self: ${alignSelf};
+  line-height: ${lineHeight};
+  transform: ${transform};
+  ${mediaQuery}
+
+  @media (max-width: 1400px) {
+    font-size: .9rem;
   }
 `;

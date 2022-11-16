@@ -8,8 +8,9 @@ import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/
 import { colors } from '../styles/colors';
 import { fonts } from '../styles/fonts';
 
-import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink, Heading4 } from '../components/text';
+import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink, Heading4, Tag } from '../components/ui/text';
 import Layout from '../components/layout';
+import { ButtonReverse } from '../components/ui/button';
 
 deckDeckGoHighlightElement();
 
@@ -22,7 +23,7 @@ const ModifiedHeading3 = styled(Heading3)`
 `;
 
 const ModifiedHeading4 = styled(Heading4)`
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 .5rem 0;
 `;
 
 const ModifiedParagraph = styled(Paragraph)`
@@ -52,36 +53,47 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.section`
   grid-area: content;
   display: grid;
-  grid-template-areas: "heading" "content";
-  grid-template-rows: auto auto;
-  margin: 10rem 0 0 0;
+  grid-template-areas: "back" "heading" "content";
+  grid-template-rows: 2rem auto auto;
+  margin: 10rem 0 40vh 0;
   max-width: 800px;
+  grid-row-gap: 4rem;
 
   @media (max-width: 1000px) {
-    margin: 10rem 2rem 0 5.5rem;
+    margin: 10rem 2rem 40vh 5.5rem;
   }
   @media (max-width: 700px) {
-    margin: 10rem 2rem 0 2.2rem;
+    margin: 10rem 2rem 40vh 2.2rem;
   }
 `;
 
 const HeadingWrapper = styled.div`
+  display: grid;
   grid-area: heading;
-  grid-template-areas: "heading-text" "subtitle";
-  grid-template-rows: auto 1rem;
-  margin: 0 0 4rem 0;
+  grid-template-areas: "heading-text" "subtitle" "tags";
+  grid-template-rows: min-content 1rem min-content;
+  margin: 0 0 0 0;
   box-shadow: 4px 4px 0 ${colors.colors.green};
   border: .1rem solid ${colors.greys.seven};
   padding: 0 2rem 2rem 2rem;
+  grid-row-gap: 2rem;
 
   @media (max-width: 460px) {
     padding: 0 1rem 2rem 1rem;
   }
 `;
 
+const TagWrapper = styled.div`
+  grid-area: tags;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
 const MarkdownWrapper = styled.div`
   grid-area: content;
-  margin: 0 0 40vh 2rem;
+  margin: 0 0 0 2rem;
   max-width: 70ch;
   box-shadow: 4px 4px 0 ${colors.colors.green};
   border: .1rem solid ${colors.greys.seven};
@@ -94,7 +106,7 @@ const MarkdownWrapper = styled.div`
 
   @media (max-width: 460px) {
     padding: 0 1rem 2rem 1rem;
-    margin: 0 0 40vh 0rem;
+    margin: 0 0 0 0rem;
   }
 
   ol, ul {
@@ -131,6 +143,22 @@ const MarkdownWrapper = styled.div`
     border-radius: 0px;
     box-shadow: 4px 4px 0 ${colors.colors.orange};
   }
+
+  audio {
+    box-shadow: 4px 4px 0 ${colors.colors.orange};
+    background-color: ${colors.greys.seven};
+
+    @media (max-width: 400px) {
+      width: 240px;
+    }
+  }
+  audio::-webkit-media-controls-panel {
+    background-color: ${colors.greys.one};
+  }
+  audio::-webkit-media-controls-enclosure {
+    border: .1rem solid ${colors.greys.seven};
+    border-radius: 0;
+  }
 `;
 
 function Template ({ data }) {
@@ -141,9 +169,19 @@ function Template ({ data }) {
     <Layout>
       <Wrapper>
         <ContentWrapper>
+          <ButtonReverse
+            onClick={() => console.log('back i say')}
+            label="Back!"
+            gridArea="back"
+          />
           <HeadingWrapper>
             <Heading1Large gridArea="heading-text" lineHeight={1}>{frontmatter.title}</Heading1Large>
-            <Label color={colors.colors.purple} gridArea="subtitle" margin="2rem 0 0 0">{frontmatter.subtitle}</Label>
+            <Label color={colors.colors.purple} gridArea="subtitle" margin="0 0 0 0">{frontmatter.subtitle}</Label>
+            <TagWrapper>
+              {frontmatter.tags.map((tag) => (
+                <Tag margin="0 0 0 0">{tag}</Tag>
+              ))}
+            </TagWrapper>
           </HeadingWrapper>
           <MarkdownWrapper>{renderAst(htmlAst)}</MarkdownWrapper>
         </ContentWrapper>
@@ -155,23 +193,25 @@ function Template ({ data }) {
 export default Template;
 
 export const pageQuery = graphql`
-  query($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      htmlAst
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        slug
-        title
-        subtitle
-        tags
-        featuredImage {
-          childImageSharp {
-            gatsbyImageData(
-              width: 800
-              placeholder: BLURRED
-            )
+  query(
+    $id: String!
+    ) {
+      markdownRemark(id: { eq: $id }) {
+        htmlAst
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          slug
+          title
+          subtitle
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(
+                width: 800
+                placeholder: BLURRED
+              )
+            }
           }
         }
       }
-    }
   }`;

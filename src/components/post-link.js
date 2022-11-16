@@ -6,14 +6,14 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { colors } from '../styles/colors';
 
-import { Heading1Large, Heading1Small, Label } from './text';
+import { Heading1Large, Heading1Small, Label, Tag } from './ui/text';
 
 import Arrow from '../svg/PostLinkArrow.svg';
 
 const Wrapper = styled(Link)`
   display: grid;
-  grid-template-areas: "image" "title" "subtitle" "button";
-  grid-template-rows: auto auto auto 3rem;
+  grid-template-areas: "image" "title" "subtitle" "tags" "button";
+  grid-template-rows: auto auto auto min-content 3rem;
   grid-row-gap: 1.5rem;
   text-decoration: none;
   box-shadow: 4px 4px 0 ${colors.colors.green};
@@ -31,6 +31,14 @@ const Wrapper = styled(Link)`
   @media (max-width: 600px) {
     padding: 0 1rem 0 1rem;
   }
+`;
+
+const TagWrapper = styled.div`
+  grid-area: tags;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 `;
 
 const ArrowWrapper = styled.div`
@@ -59,7 +67,7 @@ const GatsbyImageStyled = styled(GatsbyImage)`
   }
 `;
 
-function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date }) {
+function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date, tags }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -89,6 +97,11 @@ function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date }) {
         )}
         {subtitle}
       </Label>
+      <TagWrapper>
+        {tags.map((tag) => (
+          <Tag margin="0 0 0 0">{tag}</Tag>
+        ))}
+      </TagWrapper>
       <ArrowWrapper to={slug} isHovered={isHovered}>
         <Arrow style={{ justifySelf: 'end' }} />
       </ArrowWrapper>

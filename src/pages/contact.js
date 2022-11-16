@@ -5,10 +5,9 @@ import styled from 'styled-components';
 import { colors } from '../styles/colors';
 
 import Layout from '../components/layout';
-import { JumboSmall, Label } from '../components/text';
-import { FormInput, FormTextArea } from '../components/form';
-
-import Arrow from '../svg/PostLinkArrow.svg';
+import { JumboSmall } from '../components/ui/text';
+import { FormInput, FormTextArea } from '../components/ui/form';
+import { Button } from '../components/ui/button';
 
 const Wrapper = styled.section`
   display: grid;
@@ -26,6 +25,16 @@ const ContentWrapper = styled.div`
   @media (max-width: 1600px) {
     margin: 5rem 0 0 0;
     grid-template-rows: 9rem auto;
+  }
+
+  @media (max-width: 1200px) {
+    margin: 5rem 0 20vh 0;
+    grid-template-rows: 9rem auto;
+  }
+
+  @media (max-width: 580px) {
+    margin: 5rem 0 20vh 0;
+    grid-template-rows: 7rem auto;
   }
 `;
 
@@ -53,27 +62,9 @@ const InputsWrapper = styled.div`
   @media (max-width: 1200px) {
     grid-template-rows: 4.5rem 4.5rem 16rem;
   }
-`;
 
-const Button = styled.button`
-  grid-area: submit;
-  height: 4em;
-  border: none;
-  background: none;
-  margin: 6rem 0 0 0;
-
-  path {
-    fill: ${(props) => (props.isHovered ? colors.greys.six : colors.greys.four)};
-  }
-
-  &:active {
-    path {
-      fill: ${colors.colors.green};
-    }
-  }
-
-  @media (max-width: 1200px) {
-
+  @media (max-width: 580px) {
+    grid-template-rows: 4rem 4rem 8rem;
   }
 `;
 
@@ -83,7 +74,6 @@ function Contact () {
     name: '',
     message: '',
   });
-  const [isHovered, setIsHovered] = useState(false);
 
   function handleChange (e) {
     e.preventDefault();
@@ -93,8 +83,8 @@ function Contact () {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleClick (e) {
-    e.preventDefault();
+  function handleClick () {
+    console.log('call the api!');
   }
   return (
     <Layout>
@@ -133,18 +123,9 @@ function Contact () {
             </InputsWrapper>
             <Button
               onClick={handleClick}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              isHovered={isHovered}
-            >
-              <Label
-                margin="0 0 -.5rem -9rem"
-                color={isHovered ? colors.colors.orange : colors.greys.six}
-              >
-                Send it!
-              </Label>
-              <Arrow />
-            </Button>
+              label="Send it!"
+              margin="6rem 0 0 0"
+            />
           </FormWrapper>
         </ContentWrapper>
       </Wrapper>

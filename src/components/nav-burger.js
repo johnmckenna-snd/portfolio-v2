@@ -5,10 +5,12 @@ import { animated, useTransition, config, useSpringRef, useChain } from 'react-s
 
 import { colors } from '../styles/colors';
 
-import { NavLink } from './text';
+import { NavLink } from './ui/text';
 
 const Wrapper = styled(animated.nav)`
-  position: fixed;
+  position: absolute;
+  top: 0;
+  right: 0;
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: min-content;

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { colors } from '../styles/colors';
 
-import { Heading3, JumboLarge, NavLinkBig } from '../components/text';
+import { Heading3, JumboLarge, NavLinkBig } from '../components/ui/text';
 import Layout from '../components/layout';
 
 const Wrapper = styled.div`

@@ -6,7 +6,7 @@ import { WindowContext } from '../context/windowContext';
 
 import { colors } from '../styles/colors';
 
-import { Label, LabelLink } from './text';
+import { Label, LabelLink } from './ui/text';
 
 const Wrapper = styled.footer`
   grid-area: footer;

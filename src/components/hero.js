@@ -8,7 +8,7 @@ import { WindowContext } from '../context/windowContext';
 
 import { colors } from '../styles/colors';
 
-import { JumboLarge, NavLinkBig } from './text';
+import { JumboLarge, NavLinkBig } from './ui/text';
 import useDebounce from '../hooks/useDebounce';
 
 const Wrapper = styled.div`

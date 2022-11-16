@@ -67,6 +67,7 @@ function WorkList ({ data: { allMarkdownRemark: { edges } } }) {
                   slug,
                   title,
                   subtitle,
+                  tags,
                 },
               },
             } = item;
@@ -78,6 +79,7 @@ function WorkList ({ data: { allMarkdownRemark: { edges } } }) {
                   title={title}
                   subtitle={subtitle}
                   slug={slug}
+                  tags={tags}
                 />
               </animated.div>
             );
@@ -114,6 +116,7 @@ export const pageQuery = graphql`
             slug
             title
             subtitle
+            tags
           }
         }
       }

@@ -40,11 +40,11 @@ We'll navigate to `http://localhost:3000` just to make sure our site works.
 
 ## Add Boilerplate Github Action
 
-Next, we'll add a file that describes what we want the Github action to accomplish. This action uses a Github action VM running Ubuntu to run some commands. It is triggered only when we push to the production branch. This is helpful because it allows development to continue unimpeded until it's time to push the app live to production.
+Next, we'll add a file that describes what we want the Github action to accomplish. This action uses a Github action VM running Ubuntu to run some commands. It is triggered only when we push it to the production branch. This is helpful because it allows development to continue unimpeded until it's time to push the app live to production.
 
-First, it uses `actions/checkout` to pull the repo into the VM. Then, it removes the `package-lock.json` file. I like to do this step to make sure I'm getting the proper packages for the Host OS. I have encountered problems with different development environments muddying up a the `package-lock.json`. Then, it installs the npm packages and runs a build
+First, it uses `actions/checkout` to pull the repo into the VM. Then, it removes the `package-lock.json` file. I have encountered problems with different development environments muddying up the `package-lock.json`. Then, it installs the npm packages and runs a build
 
-After that, the action moves into AWS territory. It first uses an action from AWS to setup the Credentials on the VM. Then, it performs a S3 sync to push the built code into the bucket. After that, the VM invalidates the previous Cloudfront cache. This is a very important step because we have to tell Cloudfront we've updated the contents of the bucket and all the information is has cached at the edge is no longer current. 
+After that, the action moves into AWS territory. It first uses an action from AWS to set up the Credentials on the VM. Then, it performs an S3 sync to push the built code into the bucket. After that, the VM invalidates the previous Cloudfront cache. We have to tell Cloudfront we've updated the bucket, and all the information it has cached at the edge is no longer current. 
 
 **Create the File**
 
@@ -96,7 +96,7 @@ Now, we'll move over to the AWS side of things. Login to your AWS account.
 
 ## Create S3 Bucket
 
-First thing we need to do is to create an S3 Bucket. This is where our website will be hosted. Make sure you know which region you're creating this S3 bucket in we'll need that for Github at the end.
+First thing we need to do is to create an S3 Bucket. This is where our website will be hosted. Make sure you know which region you're creating this S3 bucket in. We'll need that for Github at the end.
 
 1. Navigate to the S3 Management Console, if this is your first time going to S3 you may see a more marketing centric page. 
 
@@ -191,7 +191,7 @@ You're policy will look something like this:
 
 ## Create the IAM User
 
-IAM users allow granting of permissions for programmatic access and permission control. The idea here is that we want an IAM account with the least permissions possible so that if it's compromised an attacker can't do much damage.
+IAM users allow granting of permissions for programmatic access and permission control. We want an IAM account with the least permissions possible so that if it's compromised an attacker can't do much damage.
 
 1. Navigate to the IAM console
 

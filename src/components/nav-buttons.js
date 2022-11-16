@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { NavLink } from './text';
+import { NavLink } from './ui/text';
 
 const Wrapper = styled.nav`
   display: grid;

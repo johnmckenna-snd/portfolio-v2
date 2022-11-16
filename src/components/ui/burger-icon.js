@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring, config } from 'react-spring';
 
-import { colors } from '../styles/colors';
+import { colors } from '../../styles/colors';
 
 const BurgerIconWrapper = styled.div`
   grid-area: ${(props) => props.gridArea || '1 / 1 / 1 / 1'};
