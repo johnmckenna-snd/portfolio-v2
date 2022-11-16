@@ -8,7 +8,7 @@ import { colors } from '../styles/colors';
 
 import { Heading1Large, Heading1Small, Label, Tag } from './ui/text';
 
-import Arrow from '../svg/PostLinkArrow.svg';
+import { Arrow } from './ui/arrow';
 
 const Wrapper = styled(Link)`
   display: grid;
@@ -103,7 +103,7 @@ function PostLink ({ title, subtitle, slug, makeSmall, featuredImage, date, tags
         ))}
       </TagWrapper>
       <ArrowWrapper to={slug} isHovered={isHovered}>
-        <Arrow style={{ justifySelf: 'end' }} />
+        <Arrow extend={isHovered} justifySelf="end" />
       </ArrowWrapper>
     </Wrapper>
   );

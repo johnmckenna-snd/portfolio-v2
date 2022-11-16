@@ -4,6 +4,9 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+
 module.exports = {
   /* Your site config here */
   plugins: [
@@ -70,6 +73,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-react-svg',
       options: { rule: { include: /svg\/.*\.svg/ } },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'john-mckenna-portfolio-v2',
+        protocol: 'https',
+        hostname: 'www.johnmckenna.io',
+      },
     },
   ],
 };

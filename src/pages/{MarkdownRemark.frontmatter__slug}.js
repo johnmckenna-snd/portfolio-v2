@@ -10,7 +10,7 @@ import { fonts } from '../styles/fonts';
 
 import { Heading1Large, Label, Heading2, Paragraph, Heading3, BlogLink, Heading4, Tag } from '../components/ui/text';
 import Layout from '../components/layout';
-import { ButtonReverse } from '../components/ui/button';
+import { ButtonReverseLink } from '../components/ui/button';
 
 deckDeckGoHighlightElement();
 
@@ -53,8 +53,8 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.section`
   grid-area: content;
   display: grid;
-  grid-template-areas: "back" "heading" "content";
-  grid-template-rows: 2rem auto auto;
+  grid-template-areas: "back" "heading" "content" "back-bottom";
+  grid-template-rows: 2rem auto auto 2rem;
   margin: 10rem 0 40vh 0;
   max-width: 800px;
   grid-row-gap: 4rem;
@@ -169,10 +169,11 @@ function Template ({ data }) {
     <Layout>
       <Wrapper>
         <ContentWrapper>
-          <ButtonReverse
-            onClick={() => console.log('back i say')}
+          <ButtonReverseLink
+            to={frontmatter.slug.includes('work') ? '../../work' : '../../blog'}
             label="Back!"
             gridArea="back"
+            justifySelf="left"
           />
           <HeadingWrapper>
             <Heading1Large gridArea="heading-text" lineHeight={1}>{frontmatter.title}</Heading1Large>
@@ -184,6 +185,12 @@ function Template ({ data }) {
             </TagWrapper>
           </HeadingWrapper>
           <MarkdownWrapper>{renderAst(htmlAst)}</MarkdownWrapper>
+          <ButtonReverseLink
+            to={frontmatter.slug.includes('work') ? '../../work' : '../../blog'}
+            label="Back I Say!"
+            gridArea="back-bottom"
+            justifySelf="left"
+          />
         </ContentWrapper>
       </Wrapper>
     </Layout>

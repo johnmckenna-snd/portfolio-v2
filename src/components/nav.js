@@ -113,7 +113,7 @@ function Nav () {
             <Label onClick={handleClick} style={{ cursor: 'help' }}>{easterEggOptions[easterEggIndex]}</Label>
           </SideWaysTextWrapper>
         </LineWrapper>
-        <NavLink margin="0 0 0 0" height="3em" to="/">John McKenna</NavLink>
+        <NavLink margin="0 0 0 0" height="1.2em" to="/">John McKenna</NavLink>
       </NavLeft>
       <NavRight>
         {showNav && (screenWidth < 800

@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import { colors } from '../styles/colors';
 
@@ -8,6 +9,8 @@ import Layout from '../components/layout';
 import { JumboSmall } from '../components/ui/text';
 import { FormInput, FormTextArea } from '../components/ui/form';
 import { Button } from '../components/ui/button';
+
+const API_URL = process.env.GATSBY_API_URL;
 
 const Wrapper = styled.section`
   display: grid;
@@ -74,6 +77,7 @@ function Contact () {
     name: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
 
   function handleChange (e) {
     e.preventDefault();
@@ -83,8 +87,20 @@ function Contact () {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleClick () {
-    console.log('call the api!');
+  async function handleClick (e) {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      console.log('Button Clicked!', formData);
+      const { name, email, message } = formData;
+
+      const headers = { 'Access-Control-Allow-Origin': 'https://www.johnmckenna.io', 'Content-Type': 'application/json' };
+
+      const result = await axios.post(API_URL, { name, email, content: message }, headers);
+      if (result.status === 200) setLoading(false);
+    } catch (err) {
+      console.error(err);
+    }
   }
   return (
     <Layout>
@@ -125,6 +141,7 @@ function Contact () {
               onClick={handleClick}
               label="Send it!"
               margin="6rem 0 0 0"
+              alignSelf="top"
             />
           </FormWrapper>
         </ContentWrapper>
