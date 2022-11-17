@@ -99,14 +99,11 @@ export const pageQuery = graphql`
           order: DESC, fields: [frontmatter___date]
         },
         filter: {
-          fileAbsolutePath: {
-            regex: "/(work)/"
+          sourceInstanceName: {
+            eq: "work"
           }
         }
       ) {
-      nodes {
-        fileAbsolutePath
-      }
       edges {
         node {
           id

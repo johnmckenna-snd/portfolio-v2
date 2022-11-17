@@ -104,14 +104,11 @@ export const pageQuery = graphql`
           order: DESC, fields: [frontmatter___date]
         },
         filter: {
-          fileAbsolutePath: {
-            regex: "/(blog)/"
+          sourceInstanceName: {
+            eq: "blog"
           }
         }
       ) {
-      nodes {
-        fileAbsolutePath
-      }
       edges {
         node {
           id
