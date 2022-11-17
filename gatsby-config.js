@@ -90,7 +90,7 @@ module.exports = {
       options: {
         bucketName: 'john-mckenna-portfolio-v2',
         protocol: 'https',
-        hostname: 'johnmckenna.io',
+        hostname: 'www.johnmckenna.io',
       },
     },
   ],
