@@ -8,7 +8,11 @@
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `John McKenna - Portfolio`,
+    siteUrl: `https://www.johnmckenna.io`,
+    description: `John McKenna's Portfolio... need I say more?`,
+  },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
