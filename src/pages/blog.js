@@ -104,8 +104,8 @@ export const pageQuery = graphql`
           order: DESC, fields: [frontmatter___date]
         },
         filter: {
-          sourceInstanceName: {
-            eq: "blog"
+          frontmatter: {
+            type: { eq: "blog" }
           }
         }
       ) {

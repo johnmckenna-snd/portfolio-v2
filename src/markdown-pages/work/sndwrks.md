@@ -4,6 +4,7 @@ date: "2022-10-29"
 title: "sndwrks"
 subtitle: "Founder"
 tags: ["iot", "consulting", "custom products", "furniture"]
+type: "work"
 ---
 
 ![sndwrks logo](../../images/sndwrks-logo-big.png)

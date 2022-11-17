@@ -4,6 +4,7 @@ date: "2022-10-30"
 title: "Herald Therapeutics"
 subtitle: "Web Development, Design, Branding"
 tags: ["logo design", "website", "cloud setup", "hosting", "brand design"]
+type: "work"
 ---
 
 ![HTX Logo](../../images/htx-branding.png)

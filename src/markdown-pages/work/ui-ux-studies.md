@@ -4,6 +4,7 @@ date: "2022-10-28"
 title: "UI/UX Studies"
 subtitle: "Captains Log, Dudes Eat, Kairos"
 tags: ["figma", "adobe xd", "ui design"]
+type: "work"
 ---
 
 # Overview

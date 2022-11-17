@@ -4,6 +4,7 @@ date: "2022-10-27"
 title: "Sound Design"
 subtitle: "Theater: NYC, National Tours, Regional"
 tags: ["system design", "content creation", "system tuning", "cad drawings"]
+type: "work"
 ---
 
 # Overview

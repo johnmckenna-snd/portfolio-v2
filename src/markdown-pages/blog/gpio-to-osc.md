@@ -5,6 +5,7 @@ title: "An Application to send GPIO via OSC"
 subtitle: "Built specifically for triggering Theatrical Effects from GPIO input"
 tags: ["gpio", "raspi", "node.js", "nginx", "docker", "osc", "qlab"]
 featuredImage: "../../images/gpio-to-osc-logo.png"
+type: "blog"
 ---
 
 ![GPIO to OSC](../../images/gpio-to-osc-logo.png)

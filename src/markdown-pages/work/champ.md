@@ -4,6 +4,7 @@ date: "2022-10-31"
 title: "Champion Data Systems"
 subtitle: "Application Developer & Contractor"
 tags: ["material ui", "raspi", "node.js", "nginx", "docker", "socket.io", "ui/ux", "react"]
+type: "work"
 ---
 
 # Overview
