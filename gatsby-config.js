@@ -114,6 +114,16 @@ module.exports = {
             sizes: '32x32',
             type: 'image/png',
           },
+          {
+            src: 'logo-192.png',
+            type: 'image/png',
+            sizes: '192x192',
+          },
+          {
+            src: 'logo-512.png',
+            type: 'image/png',
+            sizes: '512x512',
+          },
         ],
       },
     },

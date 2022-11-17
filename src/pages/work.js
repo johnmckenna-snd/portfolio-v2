@@ -119,3 +119,28 @@ export const pageQuery = graphql`
       }
     }
   }`;
+
+export function Head () {
+  return (
+    <>
+      <title>Work - John McKenna</title>
+      <meta
+        name="description"
+        content="John McKenna Portfolio - Work Examples Page"
+      />
+      <meta property="og:title" content="Work - John McKenna" />
+      <meta property="og:description" content="John McKenna Portfolio - Work Examples Page" />
+      <meta property="og:url" content="https://www.johnmckenna.io/work" />
+      <meta property="og:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+      <meta property="og:image:alt" content="John McKenna Portfolio - Work Examples Page" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="John McKenna - Portfolio" />
+
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://www.johnmckenna.io/work" />
+      <meta property="twitter:title" content="Work - John McKenna" />
+      <meta property="twitter:description" content="John McKenna Portfolio - Work Examples Page" />
+      <meta property="twitter:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+    </>
+  );
+}

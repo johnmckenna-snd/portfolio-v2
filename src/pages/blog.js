@@ -132,3 +132,28 @@ export const pageQuery = graphql`
       }
     }
   }`;
+
+export function Head () {
+  return (
+    <>
+      <title>Blog - John McKenna</title>
+      <meta
+        name="description"
+        content="John McKenna Portfolio - Blog Posts"
+      />
+      <meta property="og:title" content="John McKenna - Blog" />
+      <meta property="og:description" content="John McKenna Portfolio - Blog Posts" />
+      <meta property="og:url" content="https://www.johnmckenna.io/blog" />
+      <meta property="og:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+      <meta property="og:image:alt" content="John McKenna Portfolio - Blog Posts" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="John McKenna - Portfolio" />
+
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://www.johnmckenna.io/blog" />
+      <meta property="twitter:title" content="John McKenna - Blog" />
+      <meta property="twitter:description" content="John McKenna Portfolio - Blog Posts" />
+      <meta property="twitter:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+    </>
+  );
+}
