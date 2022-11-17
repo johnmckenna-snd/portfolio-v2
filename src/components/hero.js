@@ -14,27 +14,20 @@ import useDebounce from '../hooks/useDebounce';
 const Wrapper = styled.div`
   display: grid;
   row-gap: 2rem;
-  margin: 18rem 0 0 0;
+  margin: 20vh 0 0 0;
   grid-template-areas: "cta" "nav";
   grid-template-rows: 20rem auto;
   justify-items: center;
 
-  @media (max-width: 1600px) {
-    margin: 12rem 0 0 0;
-  }
-
   @media (max-width: 1320px) {
     grid-template-rows: 24rem auto;
-    margin: 4rem 0 0 0;
   }
 
   @media (max-width: 820px) {
-    margin: 10rem 0 0 0;
     grid-template-rows: 18rem auto;
   }
 
   @media (max-width: 450px) {
-    margin: 10rem 0 0 0;
     grid-template-rows: 14rem auto;
   }
 `;

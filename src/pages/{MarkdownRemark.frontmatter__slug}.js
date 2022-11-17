@@ -222,3 +222,30 @@ export const pageQuery = graphql`
         }
       }
   }`;
+
+export function Head ({ data, location }) {
+  const { markdownRemark } = data;
+  const { frontmatter } = markdownRemark;
+  return (
+    <>
+      <title>{`John McKenna -${frontmatter.title}`}</title>
+      <meta
+        name="description"
+        content={frontmatter.subtitle}
+      />
+      <meta property="og:title" content={frontmatter.title} />
+      <meta property="og:description" content={frontmatter.subtitle} />
+      <meta property="og:url" content={`https://www.johnmckenna.io/${location.pathname}`} />
+      <meta property="og:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+      <meta property="og:image:alt" content={frontmatter.subtitle} />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="John McKenna - Portfolio" />
+
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={`https://www.johnmckenna.io/${location.pathname}`} />
+      <meta property="twitter:title" content={frontmatter.title} />
+      <meta property="twitter:description" content={frontmatter.subtitle} />
+      <meta property="twitter:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+    </>
+  );
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -6,9 +7,10 @@ import axios from 'axios';
 import { colors } from '../styles/colors';
 
 import Layout from '../components/layout';
-import { JumboSmall } from '../components/ui/text';
+import { Heading4, JumboSmall } from '../components/ui/text';
 import { FormInput, FormTextArea } from '../components/ui/form';
 import { Button } from '../components/ui/button';
+import LoadingSpinnerSmall from '../components/ui/loadingSpinnerSmall';
 
 const API_URL = process.env.GATSBY_API_URL;
 
@@ -71,6 +73,12 @@ const InputsWrapper = styled.div`
   }
 `;
 
+const SuccessWrapper = styled.div`
+  max-width: 15rem;
+  grid-area: submit;
+  margin: 6rem 0 0 0;
+`;
+
 function Contact () {
   const [formData, setFormData] = useState({
     email: '',
@@ -78,6 +86,7 @@ function Contact () {
     message: '',
   });
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   function handleChange (e) {
     e.preventDefault();
@@ -87,19 +96,22 @@ function Contact () {
     setFormData({ ...formData, [name]: value });
   }
 
-  async function handleClick (e) {
+  async function handleClick () {
     try {
-      e.preventDefault();
       setLoading(true);
-      console.log('Button Clicked!', formData);
       const { name, email, message } = formData;
 
       const headers = { 'Access-Control-Allow-Origin': 'https://www.johnmckenna.io', 'Content-Type': 'application/json' };
 
       const result = await axios.post(API_URL, { name, email, content: message }, headers);
-      if (result.status === 200) setLoading(false);
+      if (result.status === 200) {
+        setLoading(false);
+        setSuccess('We got your message!');
+      }
     } catch (err) {
       console.error(err);
+      setLoading(false);
+      setSuccess('Shoot... that didn\'t work. Refresh and try again!');
     }
   }
   return (
@@ -137,12 +149,20 @@ function Contact () {
                 value={formData.message}
               />
             </InputsWrapper>
-            <Button
-              onClick={handleClick}
-              label="Send it!"
-              margin="6rem 0 0 0"
-              alignSelf="top"
-            />
+            {success
+              ? <SuccessWrapper><Heading4 gridArea="submit">{success}</Heading4></SuccessWrapper>
+              : (
+                loading
+                  ? <LoadingSpinnerSmall gridArea="submit" margin="6rem 0 0 0" />
+                  : (
+                    <Button
+                      onClick={handleClick}
+                      label="Send it!"
+                      margin="6rem 0 0 0"
+                      alignSelf="top"
+                    />
+                  )
+              )}
           </FormWrapper>
         </ContentWrapper>
       </Wrapper>
@@ -151,3 +171,28 @@ function Contact () {
 }
 
 export default Contact;
+
+export function Head () {
+  return (
+    <>
+      <title>Contact - John McKenna</title>
+      <meta
+        name="description"
+        content="John McKenna Portfolio - Contact Page"
+      />
+      <meta property="og:title" content="Contact - John McKenna" />
+      <meta property="og:description" content="John McKenna Portfolio - Contact Page" />
+      <meta property="og:url" content="https://www.johnmckenna.io/contact" />
+      <meta property="og:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+      <meta property="og:image:alt" content="John McKenna Portfolio - Contact Page" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="John McKenna - Portfolio" />
+
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://www.johnmckenna.io/contact" />
+      <meta property="twitter:title" content="Contact - John McKenna" />
+      <meta property="twitter:description" content="John McKenna Portfolio - Contact Page" />
+      <meta property="twitter:image" content="https://john-mckenna-portfolio-images.s3.amazonaws.com/john-mckenna-portfolio-open-graph.png" />
+    </>
+  );
+}
