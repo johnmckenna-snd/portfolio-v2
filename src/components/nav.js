@@ -18,10 +18,10 @@ const Wrapper = styled.header`
   height: 3em;
   background: ${colors.greys.one};
 
-  @media (max-width: 1400px) {
+  @media (min-width: 841px) and (max-width: 1400px) {
     height: 2.3rem;
   }
-  @media (max-width: 840px) {
+  @media (min-width: 581px) and (max-width: 840px) {
     height: 2rem;
   }
   @media (max-width: 580px) {
