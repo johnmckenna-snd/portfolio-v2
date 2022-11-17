@@ -99,8 +99,8 @@ export const pageQuery = graphql`
           order: DESC, fields: [frontmatter___date]
         },
         filter: {
-          sourceInstanceName: {
-            eq: "work"
+          frontmatter: {
+            type: { eq: "work" }
           }
         }
       ) {

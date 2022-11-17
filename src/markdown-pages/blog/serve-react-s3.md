@@ -5,6 +5,7 @@ title: "Serve a React App from S3"
 subtitle: "Includes Cloudfront CDN and Github Action CI/CD"
 tags: ["react", "cloudfront", "aws", "github actions", "ci/cd"]
 featuredImage: "../../images/react-logo.png"
+type: "blog"
 ---
 
 ![React Logo](../../images/react-logo.png)
