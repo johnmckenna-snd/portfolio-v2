@@ -152,7 +152,7 @@ function Contact () {
             {success
               ? <SuccessWrapper><Heading4 gridArea="submit">{success}</Heading4></SuccessWrapper>
               : (
-                !loading
+                loading
                   ? <LoadingSpinnerSmall gridArea="submit" margin="6rem 0 0 0" />
                   : (
                     <Button
