@@ -49,7 +49,8 @@ export function Head () {
     <>
       <title>John McKenna - Portfolio</title>
       <meta charset="utf-8" />
-      <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+      <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+      <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
       <meta
