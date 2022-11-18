@@ -17,7 +17,7 @@ Here's a small selection of shows that I was involved with:
 
 ## Ain't Too Proud
 
-I worked in live entertainment, for over ten years, principally as a Theatrical Sound Designer. From Broadway, to the small clubs, I have broad experience deploying, managing, and designing sound systems. In addition, I designed many shows doing content creation and curation.
+I was first the A2 on the pre-broadway tour of Ain't Too Proud then for the Broadway move I was the Assistant Sound Designer. Ain't Too Proud was nominated for a Tony in Sound Design.
 
 Here's an example of a drawing:
 
