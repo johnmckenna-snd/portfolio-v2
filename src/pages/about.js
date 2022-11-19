@@ -19,22 +19,22 @@ const ContentWrapper = styled.div`
   display: grid;
   grid-template-areas: "image" "who-am-i" "paragraph" "cta-button";
   grid-template-rows: min-content 14rem min-content auto;
-  margin: 13rem 0 0 0;
+  margin: 13rem 0 20vh 0;
 
   @media (max-width: 1600px) {
-    margin: 8rem 0 0 0;
+    margin: 8rem 0 20vh 0;
   }
   @media (max-width: 820px) {
     grid-template-rows: min-content 10rem min-content  auto;
-    margin: 8rem 2rem 0 5.5rem;
+    margin: 8rem 2rem 20vh 5.5rem;
   }
   @media (max-width: 700px) {
     grid-template-rows: min-content 10rem min-content auto;
-    margin: 8rem 2rem 0 1.8rem;
+    margin: 8rem 2rem 20vh 1.8rem;
   }
   @media (max-width: 580px) {
     grid-template-rows: min-content 7rem min-content auto;
-    margin: 8rem 2rem 0 1.8rem;
+    margin: 8rem 2rem 20vh 1.8rem;
   }
 `;
 
