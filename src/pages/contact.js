@@ -99,7 +99,6 @@ function Contact () {
 
   async function handleClick () {
     try {
-      setLoading(true);
       const { name, email, message } = formData;
 
       const headers = { 'Content-Type': 'application/json' };
@@ -116,6 +115,7 @@ function Contact () {
       }
 
       if (progressMessage !== 'We got your message!') {
+        setLoading(true);
         const result = await axios.post(API_URL, { name, email, content: message }, headers);
         if (result.status === 200) {
           setLoading(false);
