@@ -1,13 +1,13 @@
 /* eslint-disable no-nested-ternary */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
 import { colors } from '../styles/colors';
 
 import Layout from '../components/layout';
-import { Heading4, JumboSmall } from '../components/ui/text';
+import { JumboSmall } from '../components/ui/text';
 import { FormInput, FormTextArea } from '../components/ui/form';
 import { Button } from '../components/ui/button';
 import LoadingSpinnerSmall from '../components/ui/loadingSpinnerSmall';
@@ -73,11 +73,11 @@ const InputsWrapper = styled.div`
   }
 `;
 
-const SuccessWrapper = styled.div`
-  max-width: 15rem;
-  grid-area: submit;
-  margin: 6rem 0 0 0;
-`;
+const resetInputError = {
+  name: false,
+  email: false,
+  message: false,
+};
 
 function Contact () {
   const [formData, setFormData] = useState({
@@ -86,7 +86,8 @@ function Contact () {
     message: '',
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [progressMessage, setProgressMessage] = useState('Send it!');
+  const [inputError, setInputError] = useState(resetInputError);
 
   function handleChange (e) {
     e.preventDefault();
@@ -98,20 +99,34 @@ function Contact () {
 
   async function handleClick () {
     try {
-      setLoading(true);
       const { name, email, message } = formData;
 
-      const headers = { 'Access-Control-Allow-Origin': 'https://www.johnmckenna.io', 'Content-Type': 'application/json' };
+      const headers = { 'Content-Type': 'application/json' };
 
-      const result = await axios.post(API_URL, { name, email, content: message }, headers);
-      if (result.status === 200) {
+      if (name === '' || email === '' || message === '') {
+        setProgressMessage('Ooops. A form item is invalid.');
         setLoading(false);
-        setSuccess('We got your message!');
+        setInputError({
+          name: name === '' && 'Please enter a name.',
+          email: email === '' && 'Please enter an email.',
+          message: message === '' && 'Please enter a message.',
+        });
+        return;
+      }
+
+      if (progressMessage !== 'We got your message!') {
+        setLoading(true);
+        const result = await axios.post(API_URL, { name, email, content: message }, headers);
+        if (result.status === 200) {
+          setLoading(false);
+          setProgressMessage('We got your message!');
+          setInputError(resetInputError);
+        }
       }
     } catch (err) {
       console.error(err);
       setLoading(false);
-      setSuccess('Shoot... that didn\'t work. Refresh and try again!');
+      setProgressMessage('Shoot... that didn\'t work. Try again maybe?');
     }
   }
   return (
@@ -131,6 +146,8 @@ function Contact () {
                 onChange={handleChange}
                 name="name"
                 value={formData.name}
+                invalid={inputError.name}
+                invalidMessage={inputError.name}
               />
               <FormInput
                 gridArea="email"
@@ -139,6 +156,8 @@ function Contact () {
                 onChange={handleChange}
                 name="email"
                 value={formData.email}
+                invalid={inputError.email}
+                invalidMessage={inputError.email}
               />
               <FormTextArea
                 gridArea="message"
@@ -147,22 +166,22 @@ function Contact () {
                 onChange={handleChange}
                 name="message"
                 value={formData.message}
+                invalid={inputError.message}
+                invalidMessage={inputError.message}
               />
             </InputsWrapper>
-            {success
-              ? <SuccessWrapper><Heading4 gridArea="submit">{success}</Heading4></SuccessWrapper>
+            {
+            loading
+              ? <LoadingSpinnerSmall gridArea="submit" margin="6rem 0 0 0" />
               : (
-                loading
-                  ? <LoadingSpinnerSmall gridArea="submit" margin="6rem 0 0 0" />
-                  : (
-                    <Button
-                      onClick={handleClick}
-                      label="Send it!"
-                      margin="6rem 0 0 0"
-                      alignSelf="top"
-                    />
-                  )
-              )}
+                <Button
+                  onClick={handleClick}
+                  label={progressMessage}
+                  margin="6rem 0 0 0"
+                  alignSelf="top"
+                />
+              )
+            }
           </FormWrapper>
         </ContentWrapper>
       </Wrapper>
