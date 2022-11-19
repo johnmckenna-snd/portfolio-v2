@@ -17,7 +17,8 @@ function transform (props) { return props.transform || ''; }
 const FormInputWrapper = styled.div`
   grid-area: ${gridAreaFunc};
   display: grid;
-  grid-template-areas: "label" "input";
+  grid-template-areas: "label invalid-message" "input input";
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 2.5em 3em;
 
   @media (min-width: 581px) and (max-width: 1200px) {
@@ -33,6 +34,8 @@ const TextAreaWrapper = styled.div`
   grid-area: ${gridAreaFunc};
   display: grid;
   grid-template-areas: "label" "textarea";
+  grid-template-areas: "label invalid-message" "textarea textarea";
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 2.5rem 17rem;
 
   @media (min-width: 581px) and (max-width: 1200px) {
@@ -45,12 +48,12 @@ const TextAreaWrapper = styled.div`
 `;
 
 const FormLabel = styled.label`
-  grid-area: label;
+  grid-area: ${(props) => props.gridArea || 'label'};
   font-family: ${fonts.mono.fontFamily};
   font-weight: ${fonts.mono.light.weight};
   font-style: ${fonts.mono.light.style};
   font-size: 1rem;
-  color: ${colors.greys.seven};
+  color: ${(props) => props.color || colors.greys.seven};
   margin: ${margin};
   padding: ${padding};
   justify-self: ${justifySelf};
@@ -73,7 +76,7 @@ const Input = styled.input`
   font-size: 1.6rem;
   font-weight: ${fonts.mono.light.weight};
   font-family: ${fonts.mono.fontFamily};
-  box-shadow: 4px 4px 0 ${colors.colors.green};
+  box-shadow: 4px 4px 0 ${(props) => props.shadowColor || colors.colors.green};
 
   &:hover {
     border-color: ${colors.colors.orange};
@@ -104,7 +107,7 @@ const TextArea = styled.textarea`
   font-size: 1.6em;
   font-weight: ${fonts.mono.light.weight};
   font-family: ${fonts.mono.fontFamily};
-  box-shadow: 4px 4px 0 ${colors.colors.green};
+  box-shadow: 4px 4px 0 ${(props) => props.shadowColor || colors.colors.green};
   resize: none;
 
   &:hover {
@@ -127,31 +130,49 @@ const TextArea = styled.textarea`
   }
 `;
 
-export function FormInput ({ label, placeholder, name, onChange, gridArea, value }) {
+export function FormInput ({ label, placeholder, name, onChange, gridArea, value, invalid, invalidMessage }) {
   return (
     <FormInputWrapper gridArea={gridArea}>
       <FormLabel htmlFor={name}>{label}</FormLabel>
+      {invalid && (
+        <FormLabel
+          color={colors.colors.orange}
+          gridArea="invalid-message"
+        >
+          {invalidMessage}
+        </FormLabel>
+      )}
       <Input
         placeholder={placeholder}
         onChange={onChange}
         name={name}
         value={value}
         id={name}
+        shadowColor={invalid ? colors.colors.orange : colors.greys.green}
       />
     </FormInputWrapper>
   );
 }
 
-export function FormTextArea ({ label, placeholder, name, onChange, gridArea, value }) {
+export function FormTextArea ({ label, placeholder, name, onChange, gridArea, value, invalid, invalidMessage }) {
   return (
     <TextAreaWrapper gridArea={gridArea}>
-      <FormLabel for={name}>{label}</FormLabel>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
+      {invalid && (
+        <FormLabel
+          color={colors.colors.orange}
+          gridArea="invalid-message"
+        >
+          {invalidMessage}
+        </FormLabel>
+      )}
       <TextArea
         placeholder={placeholder}
         onChange={onChange}
         name={name}
         value={value}
         id={name}
+        shadowColor={invalid ? colors.colors.orange : colors.greys.green}
       />
     </TextAreaWrapper>
   );
