@@ -61,6 +61,8 @@ function About () {
             src="../images/john-mckenna-headshot.jpg"
             alt="John McKenna Headshot"
             style={{ borderRadius: '1000px', maxWidth: '400px' }}
+            imgStyle={{ borderRadius: '1000px' }}
+            loading="eager"
           />
           <JumboSmall gridArea="who-am-i">
             Who am I
