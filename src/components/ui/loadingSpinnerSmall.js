@@ -3,9 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles/colors';
 
+const SpinnerWrapper = styled.div`
+  margin: ${(props) => props.margin || '0 0 0 0'};
+  grid-area: ${(props) => props.gridArea || ''};
+  width: 262px;
+  display: grid;
+`;
+
 const Spinner = styled.svg`
   animation: rotate 1.5s linear infinite;
-  margin: ${(props) => props.margin || '0 0 0 0'};
   width: 50px;
   height: 50px;
   grid-area: ${(props) => props.gridArea || ''};
@@ -40,16 +46,18 @@ const Spinner = styled.svg`
 
 function LoadingSpinnerSmall ({ gridArea, margin }) {
   return (
-    <Spinner viewBox="0 0 50 50" gridArea={gridArea} margin={margin}>
-      <circle
-        className="path"
-        cx="25"
-        cy="25"
-        r="20"
-        fill="none"
-        strokeWidth="2"
-      />
-    </Spinner>
+    <SpinnerWrapper gridArea={gridArea} margin={margin}>
+      <Spinner viewBox="0 0 50 50">
+        <circle
+          className="path"
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          strokeWidth="2"
+        />
+      </Spinner>
+    </SpinnerWrapper>
   );
 }
 
