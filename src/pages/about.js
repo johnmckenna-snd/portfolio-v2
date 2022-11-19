@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import styled from 'styled-components';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import { colors } from '../styles/colors';
 
@@ -16,23 +17,23 @@ const Wrapper = styled.section`
 const ContentWrapper = styled.div`
   grid-area: content;
   display: grid;
-  grid-template-areas: "who-am-i" "paragraph" "cta-button";
-  grid-template-rows: 14rem min-content auto;
+  grid-template-areas: "image" "who-am-i" "paragraph" "cta-button";
+  grid-template-rows: min-content 14rem min-content auto;
   margin: 13rem 0 0 0;
 
   @media (max-width: 1600px) {
     margin: 8rem 0 0 0;
   }
   @media (max-width: 820px) {
-    grid-template-rows: 10rem min-content  auto;
+    grid-template-rows: min-content 10rem min-content  auto;
     margin: 8rem 2rem 0 5.5rem;
   }
   @media (max-width: 700px) {
-    grid-template-rows: 10rem min-content auto;
+    grid-template-rows: min-content 10rem min-content auto;
     margin: 8rem 2rem 0 1.8rem;
   }
   @media (max-width: 580px) {
-    grid-template-rows: 7rem min-content auto;
+    grid-template-rows: min-content 7rem min-content auto;
     margin: 8rem 2rem 0 1.8rem;
   }
 `;
@@ -56,6 +57,11 @@ function About () {
     <Layout>
       <Wrapper>
         <ContentWrapper>
+          <StaticImage
+            src="../images/john-mckenna-headshot.jpg"
+            alt="John McKenna Headshot"
+            style={{ borderRadius: '1000px', maxWidth: '400px' }}
+          />
           <JumboSmall gridArea="who-am-i">
             Who am I
             <span style={{ color: colors.colors.purple }}>?</span>
