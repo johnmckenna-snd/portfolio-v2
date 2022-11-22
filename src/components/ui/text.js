@@ -34,10 +34,10 @@ export const JumboLarge = styled.h1`
   line-height: ${lineHeight};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1490px) {
+  @media (max-width: 1490px) {
     font-size: 7rem;
   }
-  @media (min-width: 581px) and (max-width: 820px) {
+  @media (max-width: 820px) {
     font-size: 5rem;
   }
   @media (max-width: 580px) {
@@ -64,10 +64,10 @@ export const JumboSmall = styled.h1`
   line-height: ${lineHeight};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 5rem;
   }
-  @media (min-width: 581px) and (max-width: 820px) {
+  @media (max-width: 820px) {
     font-size: 4rem;
   }
   @media (max-width: 580px) {
@@ -91,10 +91,10 @@ export const Heading1Large = styled.h1`
   line-height: ${lineHeight};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 3.5rem;
   }
-  @media (min-width: 581px) and (max-width: 820px) {
+  @media (max-width: 820px) {
     font-size: 3.2rem;
   }
   @media (max-width: 580px) {
@@ -121,11 +121,11 @@ export const Heading1Small = styled.h1`
   line-height: ${lineHeight};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 2rem;
   }
 
-  @media (min-width: 581px) and (max-width: 820px) {
+  @media (max-width: 820px) {
     font-size: 1.8rem;
   }
   @media (max-width: 580px) {
@@ -151,10 +151,10 @@ export const Heading2 = styled.h2`
   height: ${height};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 2rem;
   }
-  @media (min-width: 581px) and (max-width: 820px) {
+  @media (max-width: 820px) {
     font-size: 1.8rem;
   }
   @media (max-width: 580px) {
@@ -180,10 +180,10 @@ export const Heading3 = styled.h3`
   height: ${height};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 1.7rem;
   }
-  @media (min-width: 581px) and (max-width: 820px) {
+  @media (max-width: 820px) {
     font-size: 1.4rem;
   }
   @media (max-width: 580px) {
@@ -209,7 +209,7 @@ export const Heading4 = styled.h4`
   height: ${height};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 1.2rem;
   }
 
@@ -235,7 +235,7 @@ export const Paragraph = styled.p`
   transform: ${transform};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 1rem;
   }
 `;
@@ -284,10 +284,10 @@ export const NavLink = styled(Link)`
     color: ${colors.colors.orange};
   }
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 2rem;
   }
-  @media (min-width: 581px) and (max-width: 840px) {
+  @media (max-width: 840px) {
     font-size: 1.7rem;
   }
   @media (max-width: 580px) {
@@ -317,7 +317,7 @@ export const NavLinkBig = styled(Link)`
     color: ${colors.colors.orange};
   }
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: 2.2rem;
   }
 
@@ -370,7 +370,7 @@ export const LabelLink = styled.a`
     color: ${colors.colors.orange};
   }
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: .9rem;
   }
 
@@ -398,7 +398,7 @@ export const Tag = styled.p`
   transform: ${transform};
   ${mediaQuery}
 
-  @media (min-width: 841px) and (max-width: 1400px) {
+  @media (max-width: 1400px) {
     font-size: .9rem;
   }
 `;
